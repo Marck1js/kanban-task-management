@@ -1,0 +1,77 @@
+.contenedor {
+    height: 96px;
+    background-color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .logoTop {
+        width: 300px;
+        background-color: var(--white);
+        border-right: 1px solid var(--lines-light);
+        height: 96px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .logoTop_dark {
+        background-color: var(--dark-grey);
+        border-right: 1px solid var(--lines-dark);
+    }
+
+    .platformLaunch {
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .text {
+        color: var(--dark);
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    .addNewTask {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        column-gap: 10px;
+
+        .buttonAddTask {
+            // opacity: 0.5;
+            background-color: var(--main-purple);
+            width: 164px;
+            height: 48px;
+            border: none;
+            border-radius: 24px;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--white);
+            text-transform: capitalize;
+            cursor: pointer;
+
+            &:hover {
+                background-color: var(--main-purple-hover);
+            }
+        }
+
+        .verticalEllipsis {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 25px;
+            height: 25px;
+        }
+    }
+}
+
+.contenedor_dark {
+    background-color: var(--dark-grey);
+    
+    .text_dark {
+        color: var(--white);
+    }
+}

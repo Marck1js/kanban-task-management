@@ -1,0 +1,47 @@
+.contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:hover > .buttonEllipsis {
+        opacity: 1;
+    }
+    .tasking {
+        user-select: none;
+        padding: 15px 0;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 10px;
+        .textTask {
+            letter-spacing: 2.4px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--medium-grey);
+            span {
+                &::before {
+                    content: " ";
+                }
+            }
+        }
+        .oval {
+            margin-left: 10px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+        }
+    }
+    .buttonEllipsis {
+        border: none;
+        background-color: inherit;
+        opacity: 0;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 250ms ease-in-out;
+        cursor: pointer;
+      
+    }
+}

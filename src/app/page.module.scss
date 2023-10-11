@@ -1,0 +1,12 @@
+.contenedor {
+    .main {
+        display: flex;
+        justify-content: flex-start;
+        background-color: var(--light-grey-light-bg);
+        height: calc(100vh - 96px);
+       
+    }
+    .main_dark {
+        background-color: var(--very-dark-grey-dark-bg);
+    }
+}

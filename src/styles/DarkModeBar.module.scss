@@ -1,0 +1,45 @@
+.selectMode {
+    background-color: var(--lines-light);
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    height: 48px;
+    margin: 0 10px;
+    border-radius: 8px;
+
+    .btnMode {
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        .box {
+            display: flex;
+            align-items: center;
+            position: relative;
+            width: 40px;
+            height: 20px;
+            background-color: var(--main-purple);
+            border-radius: calc(40px / 4);
+
+            &:hover {
+                cursor: pointer;
+                opacity: .5;
+            }
+            .ball {
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                background-color: var(--white);
+                border-radius: 50%;
+                border: 3px solid var(--main-purple);
+                transition: transform 150ms linear;
+            }
+        }
+    }
+}
+
+.selectMode_dark {
+    background-color: var(--very-dark-grey-dark-bg);
+}

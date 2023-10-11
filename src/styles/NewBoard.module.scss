@@ -1,0 +1,26 @@
+.newBoard {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 0;
+    padding-left: 20px;
+    color: var(--medium-grey);
+    font-weight: 700;
+    cursor: pointer;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    &:hover {
+        background-color: var(--main-purple);
+    }
+    &:hover > span {
+        color: var(--white);
+    }
+}
+.newBoard_active {
+    background-color: var(--main-purple);
+    span {
+        color: var(--white);
+    }
+}
