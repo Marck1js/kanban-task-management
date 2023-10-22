@@ -7,6 +7,7 @@ export { default as Column } from './Column/Column';
 export { default as DarkModeBar } from './DarkModeBar/DarkModeBar';
 export { default as Dashboard } from './Dashboard/Dashboard';
 export { default as DeleteBoard } from './DeleteBoard/DeleteBoard';
+export { default as DeleteTask } from './DeleteTask/DeleteTask';
 export { default as DetailTask } from './DetailTask/DetailTask';
 export { default as EditBoard } from './EditBoard/EditBoard';
 export { default as EditTask } from './EditTask/EditTask';

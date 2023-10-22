@@ -1,7 +1,8 @@
 .contenedor {
     height: calc(100vh - 96px);
     white-space: nowrap;
-    min-width: 300px;
+    width: 300px;
+    overflow: hidden;
 
     .containerSidebar {
         display: flex;
@@ -11,7 +12,6 @@
         background-color: var(--white);
         justify-content: space-between;
 
-        // display: none;
         .menu {
             display: flex;
             height: calc(100% - 115px);
@@ -63,10 +63,11 @@
             max-height: 115px;
             height: auto;
             .sidebar {
+                width: 80%;
                 display: flex;
                 column-gap: 10px;
                 align-items: center;
-                justify-content: start;
+                justify-content: flex-start;
                 margin: 15px 0 20px 20px;
                 padding: 5px 0;
                 border: none;
@@ -98,5 +99,7 @@
     padding-right: 10px;
     position: absolute;
     bottom: 10px;
-    // visibility: hidden;
+    cursor: pointer;
+    visibility: hidden;
+    z-index: 50;
 }

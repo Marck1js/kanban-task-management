@@ -2,8 +2,8 @@ import { useTheme } from "@/context/theme-provider";
 import { VerticalEllipsis } from "@/svgComponents";
 import style from "./DetailTask.module.scss";
 import { useState } from "react";
-import { ButtonSetting } from "..";
-const DetailTask = ({ setPortalDetail, textOverview }) => {
+import { ButtonSetting, DeleteTask } from "..";
+const DetailTask = ({ setPortalDetail, textOverview,setDelTask,setEditTask }) => {
   const { isDarkMode: theme } = useTheme();
   const [showSettings, setShowSettings] = useState(false);
 
@@ -52,7 +52,10 @@ const DetailTask = ({ setPortalDetail, textOverview }) => {
              editing="Edit Task" 
              deleting="Delete Task"
              setShowSettings={setShowSettings} 
-             measures={styleBtnSetting} />
+             measures={styleBtnSetting} 
+             onDelete={setDelTask}
+             onEdit={setEditTask}
+             />             
              )}
 
              

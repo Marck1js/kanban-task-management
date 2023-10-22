@@ -7,8 +7,8 @@ const Column = ({ colorTask, nameTask }) => {
       <Tasking color={colorTask} nameTask={nameTask} />
       <div className={style.fieldDetail}>
         <OverviewTask nameActivity={"Build UI for search"} />
-        <OverviewTask nameActivity={"Desing UI for search"} />
-        <OverviewTask nameActivity={"Searchin Database"} />
+        {/* <OverviewTask nameActivity={"Desing UI for search"} />
+        <OverviewTask nameActivity={"Searching Database"} /> */}
       
       </div>
     </div>

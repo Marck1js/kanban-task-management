@@ -1,4 +1,4 @@
-.OverviewTask {
+.overviewTask {
     width: 280px;
     cursor: grab;
     margin: 10px 0;
@@ -31,7 +31,7 @@
     }
 }
 
-.OverviewTask_dark {
+.overviewTask_dark {
     background-color: var(--dark-grey);
 
     &:active {

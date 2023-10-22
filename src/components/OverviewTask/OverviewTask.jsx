@@ -1,11 +1,13 @@
-import style from "./Overview.module.scss"
+import style from "./OverviewTask.module.scss"
 import { useTheme } from "@/context/theme-provider";
 import { useState } from "react";
 import { createPortal } from "react-dom";
-import { DetailTask } from "..";
+import { DeleteTask, DetailTask, EditTask } from "..";
 const Overview = ({ nameActivity, stepActivity = 3 }) => {
   const { isDarkMode: theme } = useTheme();
   const [portalDetail, setPortalDetail] = useState(false);
+  const [editTask, setEditTask] = useState(false);
+  const [delTask, setDelTask] = useState(false);
 
 
 
@@ -16,8 +18,8 @@ const Overview = ({ nameActivity, stepActivity = 3 }) => {
         onClick={() => setPortalDetail(!portalDetail)}
         className={
           theme
-            ? `${style.OverviewTask} ${style.OverviewTask_dark}`
-            : `${style.OverviewTask}`
+            ? `${style.overviewTask} ${style.overviewTask_dark}`
+            : `${style.overviewTask}`
         }
       >
         <p className={style.nameActivity}>{nameActivity}</p>
@@ -25,8 +27,40 @@ const Overview = ({ nameActivity, stepActivity = 3 }) => {
       </div>
       {
         portalDetail &&
-        <DetailTask textOverview={nameActivity} setPortalDetail={setPortalDetail} />
+        <DetailTask
+          textOverview={nameActivity}
+          setPortalDetail={setPortalDetail}
+          setDelTask={() => {
+            setPortalDetail(false)
+            setDelTask(true)
+          }}
+
+          setEditTask={() => {
+            setPortalDetail(false)
+            setEditTask(true)
+          }}
+
+
+
+        />
       }
+
+      {
+        delTask &&
+        <DeleteTask
+          taskActive={nameActivity}
+          setDelTask={setDelTask}
+        />
+      }
+
+      {
+        editTask &&
+        <EditTask
+        setEditTask={setEditTask}
+        />
+      }
+
+
     </>
 
   );

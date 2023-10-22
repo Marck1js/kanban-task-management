@@ -11,7 +11,7 @@ const TopMenu = ({ boardActive }) => {
   const [showSettings, setShowSettings] = useState(false);
   const [portalAddNewTask, setPortalAddNewTask] = useState(false);
   const [editBoard, setEditBoard] = useState(false);
-  const [delBoard,setDelBoard] = useState(true);
+  const [delBoard,setDelBoard] = useState(false);
 
   const styleBtnSetting = {
     top: 50 + 'px',

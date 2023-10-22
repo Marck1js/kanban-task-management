@@ -2,13 +2,13 @@ import React from "react";
 import style from "./EditTask.module.scss";
 import { IconCross } from "@/svgComponents";
 import { useTheme } from '@/context/theme-provider'
-const EditTask = ({ setPortalAddNewTask }) => {
+const EditTask = ({ setEditTask }) => {
 
   const { isDarkMode: theme } = useTheme();
 
   return (
     <>
-      <div onClick={() => setPortalAddNewTask(false)} className={style.position}></div>
+      <div onClick={() => setEditTask(false)} className={style.position}></div>
 
 
       <div
