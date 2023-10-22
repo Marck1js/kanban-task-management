@@ -2,10 +2,12 @@
     width: 100%;
     height: 100vh;
     background-color: #000;
-    position: absolute;
+    position: fixed;
     top: 0;
+    left: 0;
     opacity: 0.5;
     animation: back 250ms ease-in;
+    
 }
 
 @keyframes back {
@@ -30,7 +32,7 @@
     right: 0;
     bottom: 0;
     margin: auto;
-
+   
     .overview {
         display: flex;
         align-items: center;
@@ -219,3 +221,5 @@
 .contenedor_dark {
     background-color: var(--dark-grey);
 }
+
+

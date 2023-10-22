@@ -1,4 +1,4 @@
-import style from "@style/NewBoard.module.scss";
+import style from "./NewBoard.module.scss";
 import { FluentBoard } from "@/svgComponents"; 
 const NewBoard = ({nameBoard, active = false}) => {
   return (

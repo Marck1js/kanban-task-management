@@ -1,0 +1,216 @@
+.position {
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+    position: fixed;
+    top: 0;
+    opacity: 0.5;
+    animation: back 250ms ease-in;
+    z-index: 10;
+}
+
+@keyframes back {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.5;
+    }
+}
+
+.contenedor {
+    // outline: 1px solid black;
+    // outline-offset: 8px;
+    width: 480px;
+    height: max-content;
+    border-radius: 6px;
+    background-color: var(--white);
+    padding: 32px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 10;
+    .addNewTask {
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .sectionTitle {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin: 10px 0;
+
+        label {
+            font-weight: 700;
+            font-size: 12px;
+            color: var(--medium-grey);
+        }
+
+        .title {
+            background-color: var(--white);
+            border: 1px solid rgba(130, 143, 163, 0.25);
+            border-radius: 4px;
+            height: 40px;
+            width: 100%;
+            overflow: hidden;
+            color: var(--black);
+            input {
+                padding: 0 10px;
+                font-size: 13px;
+                font-weight: 500;
+                width: 100%;
+                height: 100%;
+                border: none;
+                background-color: inherit;
+
+                &:focus {
+                    outline: none;
+                }
+
+                &::placeholder {
+                    opacity: 0.25;
+                }
+            }
+        }
+    }
+
+    .sectionTitle_dark {
+        label {
+            color: var(--white);
+        }
+
+        .title {
+            background-color: var(--dark-grey);
+
+            input {
+                color: var(--white);
+            }
+        }
+    }
+
+    .sectionSubtasks {
+        margin: 10px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        label {
+            font-weight: 700;
+            font-size: 12px;
+            color: var(--medium-grey);
+        }
+
+        .contenedorSubtask {
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .inputSubtask {
+                background-color: var(--white);
+                border-radius: 4px;
+                border: 1px solid rgba(130, 143, 163, 0.25);
+                width: 100%;
+                height: 40px;
+                overflow: hidden;
+
+                input {
+                    padding: 0 5px;
+                    width: 100%;
+                    height: 100%;
+                    background-color: inherit;
+                    border: none;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+
+            .iconStyle {
+                margin-left: 16px;
+                width: 20px;
+                height: 20px;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: inherit;
+                border: none;
+                cursor: pointer;
+
+                &:hover {
+                    filter: drop-shadow(0 1px 5px rgba(0, 0, 0, 0.7));
+                }
+            }
+        }
+
+        .addNewSubtask {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 40px;
+            background-color: red;
+            border-radius: 20px;
+            background-color: rgba(99, 95, 199, 0.1);
+            border: none;
+            color: var(--main-purple);
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 23px;
+        }
+    }
+
+    .sectionSubtasks_dark {
+        label {
+            color: var(--white);
+        }
+
+        .contenedorSubtask {
+            .inputSubtask {
+                background-color: var(--dark-grey);
+
+                input {
+                    color: var(--white);
+                }
+            }
+        }
+
+        .addNewSubtask {
+            background-color: var(--white);
+        }
+    }
+
+    .createTask {
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 23px;
+        border-radius: 20px;
+        border: none;
+        text-transform: capitalize;
+        color: var(--white);
+        background-color: var(--main-purple);
+        width: 100%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+    }
+}
+
+.contenedor_dark {
+    background-color: var(--dark-grey);
+
+    .addNewTask {
+        color: var(--white);
+    }
+}

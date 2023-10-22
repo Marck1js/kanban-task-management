@@ -1,5 +1,5 @@
 import React from "react";
-import style from "@style/Tasking.module.scss";
+import style from "./Tasking.module.scss";
 import { HorizontalEllipsis, VerticalEllipsis} from "@/svgComponents";
 const Tasking = ({ color = "976720", nameTask }) => {
   const ovalColorStyle = {

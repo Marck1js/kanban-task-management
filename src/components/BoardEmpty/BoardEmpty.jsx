@@ -1,7 +1,7 @@
 'use client'
 import { ThemeContext } from '@/context/theme-provider';
 import {useContext} from 'react'
-import style from "@style/BoardEmpty.module.scss";
+import style from "./BoardEmpty.module.scss";
 const BoardEmpty = () => {
 
   return (

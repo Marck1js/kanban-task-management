@@ -1,6 +1,6 @@
 import React from "react";
-import style from "@style/Column.module.scss";
-import { OverviewTask, Tasking } from ".";
+import style from "./Column.module.scss";
+import { OverviewTask, Tasking } from "..";
 const Column = ({ colorTask, nameTask }) => {
   return (
     <div className={style.column}>
@@ -8,6 +8,7 @@ const Column = ({ colorTask, nameTask }) => {
       <div className={style.fieldDetail}>
         <OverviewTask nameActivity={"Build UI for search"} />
         <OverviewTask nameActivity={"Desing UI for search"} />
+        <OverviewTask nameActivity={"Searchin Database"} />
       
       </div>
     </div>

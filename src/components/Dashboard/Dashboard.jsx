@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import style from "@style/Dashboard.module.scss";
+import style from "./Dashboard.module.scss";
 import {
   DarkMode,
   EyeSlash,
@@ -10,13 +10,19 @@ import {
   LightMode,
   ShowSidebar,
 } from "@/svgComponents";
-import { DarkModeBar, NewBoard } from ".";
+import { AddNewBoard, DarkModeBar, NewBoard,EditBoard } from "..";
 import { useTheme } from "@/context/theme-provider";
+import { createPortal } from "react-dom";
 
 const Dashboard = () => {
-  const [numBoards, setNumBoards] = useState(2)
+  const [numBoards, setNumBoards] = useState(2);
+
+  const [showAddNewBoard, setShowAddNewBoard] = useState(false);
   const { isDarkMode: theme } = useTheme();
   const boards = useRef(null)
+  
+  
+  
   const hideSideBar = () => {
     let showSection = document.getElementById("showSection");
     let section = document.getElementById("section");
@@ -48,27 +54,23 @@ const Dashboard = () => {
               <NewBoard nameBoard={'Platform Launch'} active/>
               <NewBoard nameBoard={'Marketing Plan'} />
               <NewBoard nameBoard={'RoadMap'} />
-              <NewBoard nameBoard={'Lifestyle'} />
-              <NewBoard nameBoard={'Discord Plan'} />
-              <NewBoard nameBoard={'Google Ads'} />
-              <NewBoard nameBoard={'Payoneer'} />
-              <NewBoard nameBoard={'Excalidraw'} />
-              <NewBoard nameBoard={'Software Engineer'} />
-              <NewBoard nameBoard={'Minimal'} />
-              <NewBoard nameBoard={'Forecast'} />
-              <NewBoard nameBoard={'FaceRound'} />
-              <NewBoard nameBoard={'React Native'} />
-              <NewBoard nameBoard={'Ultra Progress'} />
-              <NewBoard nameBoard={'Bunjs'} />
-              <NewBoard nameBoard={'RoadMap'} />
-              <NewBoard nameBoard={'RoadMap'} />
+      
            
                            
-              <li className={style.createNewBoard}>
+              <li 
+                onClick={()=> setShowAddNewBoard(!showAddNewBoard)}
+                className={style.createNewBoard}>
                 <FluentBoard /> <span>+ Create New Board</span>
               </li>
             </ul>
           </div>
+
+              {
+                showAddNewBoard && 
+                  <AddNewBoard setShowAddNewBoard={setShowAddNewBoard}/>
+              }
+               
+
 
           <div className={style.options}>
             <DarkModeBar />

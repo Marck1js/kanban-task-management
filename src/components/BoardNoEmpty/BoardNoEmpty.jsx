@@ -1,5 +1,5 @@
-import style from "@style/BoardNoEmpty.module.scss";
-import { Column } from ".";
+import style from "./BoardNoEmpty.module.scss";
+import { Column } from "..";
 import { useTheme } from "@/context/theme-provider";
 const BoardNoEmpty = () => {
   const {isDarkMode: theme} = useTheme()

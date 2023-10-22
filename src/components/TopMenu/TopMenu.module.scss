@@ -39,6 +39,7 @@
         align-items: center;
         justify-content: center;
         column-gap: 10px;
+        position: relative;
 
         .buttonAddTask {
             // opacity: 0.5;
@@ -52,7 +53,6 @@
             color: var(--white);
             text-transform: capitalize;
             cursor: pointer;
-
             &:hover {
                 background-color: var(--main-purple-hover);
             }
@@ -62,15 +62,24 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 25px;
-            height: 25px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            position: relative;
+            background-color: inherit;
+            border: none;
+
+            &:hover {
+                filter: drop-shadow(0 1px 5px rgba(0, 0, 0, 0.7));
+            }
         }
+   
     }
 }
 
 .contenedor_dark {
     background-color: var(--dark-grey);
-    
+
     .text_dark {
         color: var(--white);
     }

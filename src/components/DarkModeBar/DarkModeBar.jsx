@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import style from "@style/DarkModeBar.module.scss";
+import style from "./DarkModeBar.module.scss";
 import { DarkMode, LightMode } from "@/svgComponents";
 import { useTheme } from "@/context/theme-provider";
 const DarkModeBar = () => {

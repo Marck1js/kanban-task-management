@@ -2,7 +2,7 @@
     height: calc(100vh - 96px);
     white-space: nowrap;
     min-width: 300px;
-   
+
     .containerSidebar {
         display: flex;
         flex-direction: column;
@@ -10,10 +10,9 @@
         border-right: 1px solid var(--lines-light);
         background-color: var(--white);
         justify-content: space-between;
-       
+
         // display: none;
         .menu {
-          
             display: flex;
             height: calc(100% - 115px);
             flex-direction: column;
@@ -51,6 +50,10 @@
                     cursor: pointer;
                     border-top-right-radius: 20px;
                     border-bottom-right-radius: 20px;
+
+                    &:hover {
+                        background-color: var(--lines-light);
+                    }
                 }
             }
         }
@@ -96,5 +99,4 @@
     position: absolute;
     bottom: 10px;
     // visibility: hidden;
-  
 }

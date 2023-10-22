@@ -1,10 +1,18 @@
 import { useTheme } from "@/context/theme-provider";
 import { VerticalEllipsis } from "@/svgComponents";
-import style from "@style/DetailTask.module.scss";
+import style from "./DetailTask.module.scss";
 import { useState } from "react";
+import { ButtonSetting } from "..";
 const DetailTask = ({ setPortalDetail, textOverview }) => {
   const { isDarkMode: theme } = useTheme();
   const [showSettings, setShowSettings] = useState(false);
+
+
+  const styleBtnSetting = {
+    top: 30 +'px',
+    right: 0 + 'px'
+  };
+
   return (
     <>
       <div
@@ -13,6 +21,7 @@ const DetailTask = ({ setPortalDetail, textOverview }) => {
       ></div>
 
       <div
+   
         className={
           theme
             ? `${style.contenedor} ${style.contenedor_dark}`
@@ -37,21 +46,16 @@ const DetailTask = ({ setPortalDetail, textOverview }) => {
             >
               <VerticalEllipsis />
             </button>
-            {showSettings && (
 
-              <div 
+            {showSettings && (
+             <ButtonSetting 
+             editing="Edit Task" 
+             deleting="Delete Task"
+             setShowSettings={setShowSettings} 
+             measures={styleBtnSetting} />
+             )}
+
              
-              className={
-                theme
-                  ? `${style.optionsSettings} ${style.optionsSettings_dark}`
-                  : `${style.optionsSettings}`
-              }
-              
-              >
-                <button className={style.optionEdit}>Edit Task</button>
-                <button className={style.optionDelete}>Delete Task</button>
-              </div>
-            )}
           </div>
         </div>
 
@@ -117,7 +121,7 @@ const DetailTask = ({ setPortalDetail, textOverview }) => {
           >
             <label className={style.labelTask}>
               <input type="checkbox" />
-              <span className={`${style.todoSpan}`}>
+              <span className={`${style.todoSpan} `}>
                 Research competitor pricing and business models
               </span>
             </label>
@@ -145,3 +149,18 @@ const DetailTask = ({ setPortalDetail, textOverview }) => {
 };
 
 export default DetailTask;
+
+
+
+// <div 
+             
+// className={
+//   theme
+//     ? `${style.optionsSettings} ${style.optionsSettings_dark}`
+//     : `${style.optionsSettings}`
+// }
+
+// >
+//   <button className={style.optionEdit}>Edit Task</button>
+//   <button className={style.optionDelete}>Delete Task</button>
+// </div>
