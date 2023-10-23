@@ -12,11 +12,9 @@ import {
 } from "@/svgComponents";
 import { AddNewBoard, DarkModeBar, NewBoard, EditBoard } from "..";
 import { useTheme } from "@/context/theme-provider";
-import { createPortal } from "react-dom";
 
-const Dashboard = () => {
-  const [numBoards, setNumBoards] = useState(2);
-
+const Dashboard = ({ listBoards }) => {
+ 
   const [showAddNewBoard, setShowAddNewBoard] = useState(false);
   const { isDarkMode: theme } = useTheme();
   const boards = useRef(null)
@@ -34,9 +32,9 @@ const Dashboard = () => {
     section.addEventListener("transitionend", funVisible);
   };
 
-  
+
   const showSidebar = () => {
-   
+
     let showSection = document.getElementById("showSection");
     let section = document.getElementById("section");
     showSection.style.visibility = `hidden`;
@@ -49,13 +47,23 @@ const Dashboard = () => {
         <div id="cont" className={theme ? `${style.containerSidebar} ${style.containerSidebar_dark}` : `${style.containerSidebar}`}>
           <div className={style.menu}>
             <p className={style.boards}>
-              all boards <span>({numBoards})</span>
+              all boards <span>({listBoards?.length ?? 0})</span>
             </p>
             <ul ref={boards} className={style.list}>
-              <NewBoard nameBoard={'Platform Launch'} active />
-              <NewBoard nameBoard={'Marketing Plan'} />
-              <NewBoard nameBoard={'RoadMap'} />
 
+              {
+                listBoards?.length > 0 && (
+                  listBoards.map((elem, idx) => {
+                    return (
+                      <NewBoard nameBoard={elem} active={idx == 0 ? true : false} key={idx} />
+                    )
+                  })
+                )
+              }
+
+              {/* <NewBoard nameBoard={'Platform Launch'} active />
+              <NewBoard nameBoard={'Marketing Plan'} />
+              <NewBoard nameBoard={'RoadMap'} /> */}
 
 
               <li

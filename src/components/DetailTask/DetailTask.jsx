@@ -1,11 +1,24 @@
+'use client'
+
+import { useState} from "react";
 import { useTheme } from "@/context/theme-provider";
 import { VerticalEllipsis } from "@/svgComponents";
 import style from "./DetailTask.module.scss";
-import { useState } from "react";
-import { ButtonSetting, DeleteTask } from "..";
-const DetailTask = ({ setPortalDetail, textOverview,setDelTask,setEditTask }) => {
+import {checkTrues} from '@/helpers'
+import { ButtonSetting, DeleteTask, SubtaskCheck } from "..";
+const DetailTask = ({detailTaskProps, data }) => {
+  const {tareas} = detailTaskProps 
+
   const { isDarkMode: theme } = useTheme();
+
   const [showSettings, setShowSettings] = useState(false);
+
+  // Luego cambiar index por crypto.randomUUID
+  const handleChangeValue = (keyId) => {
+    const currentTareas = [...tareas];
+    currentTareas[keyId].isCompleted = !currentTareas[keyId].isCompleted;
+    detailTaskProps.setTareas(currentTareas); 
+  } 
 
 
   const styleBtnSetting = {
@@ -13,15 +26,16 @@ const DetailTask = ({ setPortalDetail, textOverview,setDelTask,setEditTask }) =>
     right: 0 + 'px'
   };
 
+
   return (
     <>
       <div
-        onClick={() => setPortalDetail(false)}
+        onClick={() => detailTaskProps.setPortalDetail(false)}
         className={style.position}
       ></div>
 
       <div
-   
+
         className={
           theme
             ? `${style.contenedor} ${style.contenedor_dark}`
@@ -37,7 +51,7 @@ const DetailTask = ({ setPortalDetail, textOverview,setDelTask,setEditTask }) =>
                 : `${style.textOverview}`
             }
           >
-            {textOverview}
+            {detailTaskProps.textOverview}
           </p>
           <div className={style.boxSettings}>
             <button
@@ -53,8 +67,8 @@ const DetailTask = ({ setPortalDetail, textOverview,setDelTask,setEditTask }) =>
              deleting="Delete Task"
              setShowSettings={setShowSettings} 
              measures={styleBtnSetting} 
-             onDelete={setDelTask}
-             onEdit={setEditTask}
+             onDelete={detailTaskProps.setDelTask}
+             onEdit={detailTaskProps.setEditTask}
              />             
              )}
 
@@ -65,9 +79,7 @@ const DetailTask = ({ setPortalDetail, textOverview,setDelTask,setEditTask }) =>
         {/* Descripcion */}
         <div className={style.description}>
           <p className={style.textDescription}>
-            We know what we're planning to build for version one. Now we need to
-            finalise the first pricing model we'll use. Keep iterating the
-            subtasks until we have a coherent proposition.
+            {detailTaskProps.detailsInfo.description}
           </p>
         </div>
 
@@ -81,11 +93,31 @@ const DetailTask = ({ setPortalDetail, textOverview,setDelTask,setEditTask }) =>
             }
           >
             Subtasks {"("}
-            <span>2</span> of <span>3</span>
+            <span> {detailTaskProps.truesCheck} </span> of <span>{ tareas.length } </span>
             {")"}
           </p>
 
-          <div
+           {/* Mapping SubtaskCheck */}
+          
+
+         {
+           tareas?.length > 0 && (
+             tareas.map((elem,idx)=> {
+                // let keyId = crypto.randomUUID();
+                return (
+                  <SubtaskCheck
+                    changeValue={()=> handleChangeValue(idx)}
+                    title={elem.title}
+                    isCompleted={elem.isCompleted}
+                    key={idx}
+                  />
+                )
+             })
+           )
+         }
+
+
+           {/* <div
             className={
               theme
                 ? `${style.itemSubtask} ${style.itemSubtask_dark}`
@@ -98,7 +130,7 @@ const DetailTask = ({ setPortalDetail, textOverview,setDelTask,setEditTask }) =>
                 Research competitor pricing and business models
               </span>
             </label>
-          </div>
+          </div> 
 
           <div
             className={
@@ -128,7 +160,8 @@ const DetailTask = ({ setPortalDetail, textOverview,setDelTask,setEditTask }) =>
                 Research competitor pricing and business models
               </span>
             </label>
-          </div>
+          </div> */}
+
         </div>
 
         {/* Current Status */}
@@ -141,9 +174,22 @@ const DetailTask = ({ setPortalDetail, textOverview,setDelTask,setEditTask }) =>
         >
           <label>Current Status</label>
           <select className={style.selectStatus}>
-            <option>Doing</option>
-            <option>Todo</option>
-            <option>Done</option>
+           
+            {/* <option>{detailTaskProps.detailsInfo.status}</option> */}
+            {
+              detailTaskProps?.listColumns?.length > 0 && (
+                detailTaskProps.listColumns.map((e,idx)=>{
+                  // if(e == detailTaskProps.detailsInfo.status){
+                  //   return;
+                  // } else {
+                    return (
+                      <option key={idx}>{e}</option>
+                      )
+                  // }
+                })
+              )
+            }
+            
           </select>
         </div>
       </div>

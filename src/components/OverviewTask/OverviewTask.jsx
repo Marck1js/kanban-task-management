@@ -1,13 +1,39 @@
+'use client'
+
 import style from "./OverviewTask.module.scss"
 import { useTheme } from "@/context/theme-provider";
-import { useState } from "react";
-import { createPortal } from "react-dom";
+import { useState, useCallback } from "react";
+
 import { DeleteTask, DetailTask, EditTask } from "..";
-const Overview = ({ nameActivity, stepActivity = 3 }) => {
+import { checkTrues } from "@/helpers";
+const Overview = ({ stepActivity = 1, detailsInfo, listColumns }) => {
+  
+  
   const { isDarkMode: theme } = useTheme();
   const [portalDetail, setPortalDetail] = useState(false);
   const [editTask, setEditTask] = useState(false);
   const [delTask, setDelTask] = useState(false);
+  const [tareas, setTareas] = useState([...detailsInfo.subtasks]);
+  const truesCheck = useCallback(checkTrues(tareas), [tareas]);
+
+
+  const detailTaskProps = {
+    listColumns,
+    setTareas,
+    truesCheck,
+    tareas,
+    detailsInfo,
+    textOverview: detailsInfo.title,
+    setPortalDetail,
+    setDelTask:() => {
+      setPortalDetail(false)
+      setDelTask(true)
+    },
+    setEditTask :() => {
+      setPortalDetail(false)
+      setEditTask(true)
+    }
+  }
 
 
 
@@ -22,33 +48,20 @@ const Overview = ({ nameActivity, stepActivity = 3 }) => {
             : `${style.overviewTask}`
         }
       >
-        <p className={style.nameActivity}>{nameActivity}</p>
-        <p className={style.stepActivity}> 0 of {stepActivity} substasks</p>
+        <p className={style.nameActivity}>{detailsInfo.title}</p>
+        <p className={style.stepActivity}> {truesCheck} of {detailsInfo.subtasks.length} substasks</p>
       </div>
       {
         portalDetail &&
         <DetailTask
-          textOverview={nameActivity}
-          setPortalDetail={setPortalDetail}
-          setDelTask={() => {
-            setPortalDetail(false)
-            setDelTask(true)
-          }}
-
-          setEditTask={() => {
-            setPortalDetail(false)
-            setEditTask(true)
-          }}
-
-
-
-        />
+        detailTaskProps={detailTaskProps}
+       />
       }
 
       {
         delTask &&
         <DeleteTask
-          taskActive={nameActivity}
+          taskActive={detailsInfo.title}
           setDelTask={setDelTask}
         />
       }
@@ -56,7 +69,7 @@ const Overview = ({ nameActivity, stepActivity = 3 }) => {
       {
         editTask &&
         <EditTask
-        setEditTask={setEditTask}
+          setEditTask={setEditTask}
         />
       }
 

@@ -1,19 +1,22 @@
 .optionsSettings {
     overflow: hidden;
     position: absolute;
-    
+
     // Pasar Top left Rigth button
-    // por style 
+    // por style
     // top: 50px;
     // left: 80px;
-    
+
     // top: 30px;
     // right: 0px;
-    
+
     // top: var(--userTop, 0px);
     // left: var(--userLeft, 0px);
     // right: var(--userRight, 0px);
 
+    box-shadow: 9px 9px 44px -7px rgba(0, 0, 0, 0.7);
+    -webkit-box-shadow: 9px 9px 44px -7px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 9px 9px 44px -7px rgba(0, 0, 0, 0.7);
     width: 120px;
     background-color: var(--white);
     display: flex;

@@ -1,3 +1,5 @@
+'use client'
+
 import style from "./TopMenu.module.scss";
 import { VerticalEllipsis } from "@/svgComponents";
 import { KanbanLogoDark, KanbanLogoLight } from "@/svgComponents";
@@ -12,7 +14,6 @@ const TopMenu = ({ boardActive }) => {
   const [portalAddNewTask, setPortalAddNewTask] = useState(false);
   const [editBoard, setEditBoard] = useState(false);
   const [delBoard,setDelBoard] = useState(false);
-
   const styleBtnSetting = {
     top: 50 + 'px',
     left: 80 + 'px'
@@ -48,9 +49,11 @@ const TopMenu = ({ boardActive }) => {
             <button
               onClick={() => setPortalAddNewTask(!portalAddNewTask)}
               className={style.buttonAddTask}
+              disabled={!boardActive ? true : false}
             >+ Add new task </button>
             <button
               className={style.verticalEllipsis}
+              disabled={!boardActive ? true : false}
               onClick={() => setShowSettings(!showSettings)}
             >
               <VerticalEllipsis />

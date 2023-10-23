@@ -41,6 +41,12 @@
         column-gap: 10px;
         position: relative;
 
+
+
+        .buttonAddTask:disabled {
+            cursor: not-allowed;
+            opacity: .5;
+        }
         .buttonAddTask {
             // opacity: 0.5;
             background-color: var(--main-purple);
@@ -58,6 +64,11 @@
             }
         }
 
+
+        .verticalEllipsis:disabled {
+            cursor: not-allowed;
+            opacity: .5;
+        }
         .verticalEllipsis {
             display: flex;
             align-items: center;

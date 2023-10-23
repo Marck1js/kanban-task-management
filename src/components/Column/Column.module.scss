@@ -1,5 +1,5 @@
 .column {
-    width: 280px;
+    min-width: 280px;
     height: 100%;
     .fieldDetail {
         height: calc(100% - 45px);

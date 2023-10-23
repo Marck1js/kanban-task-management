@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Tasking.module.scss";
 import { HorizontalEllipsis, VerticalEllipsis} from "@/svgComponents";
-const Tasking = ({ color = "976720", nameTask }) => {
+const Tasking = ({ color = "976720", nameTask, quantity}) => {
   const ovalColorStyle = {
     backgroundColor: `#${color}`,
   };
@@ -12,7 +12,7 @@ const Tasking = ({ color = "976720", nameTask }) => {
         <div className={style.oval} style={ovalColorStyle}></div>
         <p className={style.textTask}>
           {nameTask?.toUpperCase()}
-          <span>(4)</span>
+          <span>({quantity})</span>
         </p>
       </div>
       <button className={style.buttonEllipsis}>

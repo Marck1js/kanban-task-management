@@ -1,19 +1,28 @@
-"use client";
 import "@/app/globals.css";
 import style from "@/app/page.module.scss";
-import { BoardEmpty, BoardNoEmpty, Dashboard, TopMenu} from "@/components";
-import { useTheme } from "@/context/theme-provider";
+import { BoardEmpty, BoardNoEmpty, Dashboard, TopMenu } from "@/components";
+import { getBoards } from '@/fetching';
 
-const page = () => {
-  const { isDarkMode: theme } = useTheme();
+
+const page = async () => {
+
+  const data = await getBoards();
+  const listBoards = await data?.map(e => e.name);
 
   return (
     <section className={style.contenedor}>
-      <TopMenu boardActive={'UI/UX Design'}/>
+      <TopMenu boardActive={data?.[0].name ?? null} />
 
-      <div className={ theme ? `${style.main} ${style.main_dark}` : `${style.main}`}>
-        <Dashboard />
-        <BoardNoEmpty />
+      <div className={style.main}>
+        <Dashboard listBoards={listBoards} />
+
+        {
+          data
+            ? <BoardNoEmpty data={data} />
+            : <BoardEmpty thereIs={data ? true : false} />
+        }
+
+
       </div>
     </section>
   );
