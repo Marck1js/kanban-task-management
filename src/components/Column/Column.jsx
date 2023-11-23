@@ -18,7 +18,7 @@ const Column = ({ colorTask, nameTask, tasks,listColumns }) => {
           tasks.length > 0 && (
             tasks.map((elem, idx) => {
               return (
-                <OverviewTask listColumns={listColumns} key={crypto.randomUUID()} detailsInfo={elem} />
+                <OverviewTask listColumns={listColumns} key={elem.id} detailsInfo={elem} />
               )
             })
           )

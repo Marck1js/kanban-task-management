@@ -27,8 +27,8 @@ const BoardNoEmpty = ({ data }) => {
               return (
                 <Column
                   listColumns={data[n].columns.map(e => e.name)}
-                  key={crypto.randomUUID()}
-                  colorTask={'e1e1e1'}
+                  key={elem.id}
+                  colorTask={RGB()}
                   nameTask={elem.name}
                   tasks={elem.tasks}
                 />

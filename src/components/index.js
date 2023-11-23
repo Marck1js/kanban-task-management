@@ -16,3 +16,4 @@ export { default as OverviewTask } from './OverviewTask/OverviewTask';
 export { default as SubtaskCheck } from './SubtaskCheck/SubtaskCheck';
 export { default as Tasking } from './Tasking/Tasking';
 export { default as TopMenu } from './TopMenu/TopMenu';
+export * from './index';

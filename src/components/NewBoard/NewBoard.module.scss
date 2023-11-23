@@ -12,14 +12,24 @@
     border-bottom-right-radius: 20px;
 
     &:hover {
-        background-color: var(--main-purple);
+        background-color: var(--lines-light);
+        
     }
     &:hover > span {
-        color: var(--white);
+        color: var(--main-purple);
     }
 }
 .newBoard_active {
     background-color: var(--main-purple);
+
+    &:hover {
+    background-color: var(--main-purple);
+
+    }
+&:hover > span {
+        color: var(--white);
+    }
+
     span {
         color: var(--white);
     }

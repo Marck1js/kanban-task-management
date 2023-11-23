@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { useTheme } from '@/context/theme-provider';
 import style from './SubtaskCheck.module.scss';
+import { setSubtasksComplete } from '@/fetching';
 
 const SubtaskCheck = ({title,isCompleted, changeValue}) => {
     const { isDarkMode: theme } = useTheme();
@@ -16,8 +17,10 @@ const SubtaskCheck = ({title,isCompleted, changeValue}) => {
                     : `${style.itemSubtask}`
             }
         >
-            <label className={style.labelTask}>
+            <label className={style.labelTask}
+            >
                 <input 
+                onClick={() => setSubtasksComplete(title)}
                 type="checkbox" 
                 value={isCompleted}
                 checked={isCompleted}

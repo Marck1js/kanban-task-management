@@ -104,12 +104,13 @@ const DetailTask = ({detailTaskProps, data }) => {
            tareas?.length > 0 && (
              tareas.map((elem,idx)=> {
                 // let keyId = crypto.randomUUID();
+                console.log(elem);
                 return (
                   <SubtaskCheck
                     changeValue={()=> handleChangeValue(idx)}
                     title={elem.title}
                     isCompleted={elem.isCompleted}
-                    key={idx}
+                    key={elem.id}
                   />
                 )
              })

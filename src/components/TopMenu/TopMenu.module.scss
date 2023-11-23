@@ -1,9 +1,16 @@
+@use '../media_queries' as mq;
+
+
 .contenedor {
     height: 96px;
     background-color: var(--white);
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @include mq.mediaTablet() {
+        height: 80px;
+    }
 
     .logoTop {
         width: 300px;
@@ -13,7 +20,13 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
+        @include mq.mediaTablet() {
+            width: 260px;
+        }
     }
+   
+   
 
     .logoTop_dark {
         background-color: var(--dark-grey);
@@ -32,6 +45,11 @@
         color: var(--dark);
         font-size: 24px;
         font-weight: 700;
+
+        @include mq.mediaTablet() {
+            font-size: 20px;
+        }
+
     }
 
     .addNewTask {

@@ -1,8 +1,13 @@
+@use '../media_queries' as mq;
+
 .contenedor {
     height: calc(100vh - 96px);
     white-space: nowrap;
-    width: 300px;
     overflow: hidden;
+    width: 300px;
+    @include mq.mediaTablet() {
+        width: 260px;
+    }
 
     .containerSidebar {
         display: flex;
@@ -11,6 +16,7 @@
         border-right: 1px solid var(--lines-light);
         background-color: var(--white);
         justify-content: space-between;
+     
 
         .menu {
             display: flex;
@@ -26,6 +32,7 @@
                 font-weight: 700;
                 color: var(--medium-grey);
                 user-select: none;
+                font-size: 12px;
             }
 
             .list {

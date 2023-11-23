@@ -1,3 +1,5 @@
+@use "../media_queries" as mq;
+
 .contenedor {
     flex: 1;
     height: 100%;
@@ -11,11 +13,16 @@
         font-size: 18px;
         font-weight: 700;
         color: var(--medium-grey);
+        text-align: center;
+        padding: 0 20px;
+        @include mq.mediaTablet() {
+            width: 420px;
+        }
     }
 
     .buttonAddTask:disabled {
         cursor: not-allowed;
-        opacity: .5;
+        opacity: 0.5;
     }
     .buttonAddTask {
         background-color: var(--main-purple);

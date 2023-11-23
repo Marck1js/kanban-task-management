@@ -4,6 +4,11 @@
     border: none;
     &:hover {
         background-color: rgba(99, 95, 199, 0.25);
+        .labelTask {
+             .todoSpan_done {
+                opacity: 1;  
+             }
+        }
     }
 
     .labelTask {
@@ -23,7 +28,8 @@
             font-weight: 700;
             color: var(--black);
             text-align: start;
-        }
+            
+        } 
         .todoSpan_done {
             opacity: 0.5;
             text-decoration-line: line-through;

@@ -85,7 +85,11 @@ const AddNewTask = ({ setPortalAddNewTask }) => {
             </button>
           </div>
 
-          <button className={style.addNewSubtask}>+Add New Subtask</button>
+          <button className={style.addNewSubtask}
+            onClick={() => {
+              window.location.reload();
+            }}
+          >+Add New Subtask</button>
 
 
         </div>
