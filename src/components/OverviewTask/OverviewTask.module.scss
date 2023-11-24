@@ -1,3 +1,5 @@
+@use "../media_queries" as mq;
+
 .overviewTask {
     width: 280px;
     cursor: grab;
@@ -19,6 +21,12 @@
         border: 2px dashed var(--lines-dark);
     }
 
+    @include mq.mediaTablet() {
+        &:active {
+            cursor: default;
+            border: none;
+        }
+    }
     .nameActivity {
         font-size: 15px;
         color: var(--black);

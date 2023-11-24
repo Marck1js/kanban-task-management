@@ -21,6 +21,20 @@
     }
 }
 
+
+@keyframes appearMobile {
+    from {
+        opacity: 0;
+        left: -100px;
+    }
+
+    to {
+        opacity: 1;
+        left: 0;
+    }
+}
+
+
 .contenedor {
     // outline: 1px solid black;
     // outline-offset: 8px;
@@ -40,12 +54,17 @@
     justify-content: space-between;
     z-index: 100;
 
+
+    
     @include mq.mediaMobile() {
         width: 95%;
         height: 400px;
         padding: 16px;
+        animation: appearMobile 250ms linear;
         overflow: scroll;
     }
+
+
 
     .addNewTask {
         font-size: 18px;

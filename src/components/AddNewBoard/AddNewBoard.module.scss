@@ -1,9 +1,12 @@
+@use "../media_queries" as mq;
+
 .position {
     width: 100%;
     height: 100vh;
     background-color: #000;
     position: fixed;
     top: 0;
+    left: 0;
     opacity: 0.5;
     animation: back 250ms ease-in;
     z-index: 10;
@@ -15,6 +18,18 @@
     }
     to {
         opacity: 0.5;
+    }
+}
+
+@keyframes appearMobile {
+    from {
+        opacity: 0;
+        left: -100px;
+    }
+
+    to {
+        opacity: 1;
+        left: 0;
     }
 }
 
@@ -36,6 +51,15 @@
     flex-direction: column;
     justify-content: space-between;
     z-index: 10;
+
+    @include mq.mediaMobile() {
+        width: 95%;
+        padding: 16px;
+        height: 400px;
+        animation: appearMobile 250ms linear;
+        overflow: scroll;
+    }
+
     .addNewTask {
         font-size: 18px;
         font-weight: 700;
