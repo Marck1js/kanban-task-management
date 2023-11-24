@@ -18,6 +18,9 @@
         @include mq.mediaTablet() {
             width: 420px;
         }
+        @include mq.mediaMobile() {
+            width: 100%;
+        }
     }
 
     .buttonAddTask:disabled {

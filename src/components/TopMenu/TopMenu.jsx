@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import style from "./TopMenu.module.scss";
 import { VerticalEllipsis } from "@/svgComponents";
@@ -8,20 +8,18 @@ import { AddNewTask, ButtonSetting, DeleteBoard, EditBoard } from "..";
 import { useRef, useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 const TopMenu = ({ boardActive }) => {
-
   const { isDarkMode: theme } = useTheme();
   const [showSettings, setShowSettings] = useState(false);
   const [portalAddNewTask, setPortalAddNewTask] = useState(false);
   const [editBoard, setEditBoard] = useState(false);
-  const [delBoard,setDelBoard] = useState(false);
+  const [delBoard, setDelBoard] = useState(false);
   const styleBtnSetting = {
-    top: 50 + 'px',
-    left: 80 + 'px'
+    top: 50 + "px",
+    left: 80 + "px",
   };
 
   return (
     <>
-
       <section
         className={
           theme
@@ -31,13 +29,14 @@ const TopMenu = ({ boardActive }) => {
       >
         <div
           className={
-            theme ? `${style.logoTop} ${style.logoTop_dark}` : `${style.logoTop}`
+            theme
+              ? `${style.logoTop} ${style.logoTop_dark}`
+              : `${style.logoTop}`
           }
         >
           {theme ? <KanbanLogoDark /> : <KanbanLogoLight />}
         </div>
         <div className={style.platformLaunch}>
-
           <p
             className={
               theme ? `${style.text} ${style.text_dark}` : `${style.text}`
@@ -50,7 +49,9 @@ const TopMenu = ({ boardActive }) => {
               onClick={() => setPortalAddNewTask(!portalAddNewTask)}
               className={style.buttonAddTask}
               disabled={!boardActive ? true : false}
-            >+ Add new task </button>
+            >
+              + Add new task{" "}
+            </button>
             <button
               className={style.verticalEllipsis}
               disabled={!boardActive ? true : false}
@@ -59,53 +60,33 @@ const TopMenu = ({ boardActive }) => {
               <VerticalEllipsis />
             </button>
 
-            {
-              showSettings && (
-                <ButtonSetting
-                  setShowSettings={setShowSettings}
-                  measures={styleBtnSetting}
-                  onEdit={() => {
-                    setEditBoard(true)
-                  }}
-                  onDelete={() => {
-                    setDelBoard(true)
-                  }}
-                />
-              )}
-
+            {showSettings && (
+              <ButtonSetting
+                setShowSettings={setShowSettings}
+                measures={styleBtnSetting}
+                onEdit={() => {
+                  setEditBoard(true);
+                }}
+                onDelete={() => {
+                  setDelBoard(true);
+                }}
+              />
+            )}
           </div>
         </div>
-
-
       </section>
 
-      {
-        portalAddNewTask && createPortal(
+      {portalAddNewTask &&
+        createPortal(
           <AddNewTask setPortalAddNewTask={setPortalAddNewTask} />,
           document.body
-        )
-      }
+        )}
 
-      {
-        editBoard &&
-        (
-          <EditBoard
-            setEditBoard={setEditBoard}
-          />
-        )
-      }
+      {editBoard && <EditBoard setEditBoard={setEditBoard} />}
 
-      {
-        delBoard &&
-        (
-          <DeleteBoard
-          boardActive={boardActive}
-          setDelBoard={setDelBoard}
-          />
-        )
-      }
-
-
+      {delBoard && (
+        <DeleteBoard boardActive={boardActive} setDelBoard={setDelBoard} />
+      )}
     </>
   );
 };

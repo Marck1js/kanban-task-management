@@ -1,11 +1,18 @@
+@use "../media_queries" as mq;
+
 .contenedor {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     &:hover > .buttonEllipsis {
         opacity: 1;
     }
+
+    @include mq.mediaMobile() {
+        margin-top: 5px;
+        height: 30px;
+    }
+
     .tasking {
         user-select: none;
         padding: 15px 0;
@@ -42,6 +49,9 @@
         align-items: center;
         transition: opacity 250ms ease-in-out;
         cursor: pointer;
-      
+
+        @include mq.mediaTablet() {
+            opacity: 1;
+        }
     }
 }

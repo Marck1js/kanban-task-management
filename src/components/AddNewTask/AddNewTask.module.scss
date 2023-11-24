@@ -1,3 +1,5 @@
+@use "../media_queries" as mq;
+
 .position {
     position: absolute;
     top: 0;
@@ -37,6 +39,13 @@
     flex-direction: column;
     justify-content: space-between;
     z-index: 100;
+
+    @include mq.mediaMobile() {
+        width: 95%;
+        height: 400px;
+        padding: 16px;
+        overflow: scroll;
+    }
 
     .addNewTask {
         font-size: 18px;
@@ -84,7 +93,6 @@
     }
 
     .sectionTitle_dark {
-
         label {
             color: var(--white);
         }
@@ -95,11 +103,8 @@
             input {
                 color: var(--white);
             }
-
         }
-
     }
-
 
     .sectionDescription {
         display: flex;
@@ -131,7 +136,7 @@
                 line-height: 20px;
                 border: none;
                 background-color: inherit;
-                
+
                 &::placeholder {
                     opacity: 0.25;
                 }
@@ -143,7 +148,6 @@
         }
     }
 
-
     .sectionDescription_dark {
         label {
             color: var(--white);
@@ -151,14 +155,12 @@
 
         .textarea {
             background-color: var(--dark-grey);
-        
+
             textarea {
                 color: var(--white);
             }
         }
-        
     }
-
 
     .sectionSubtasks {
         margin: 10px 0;
@@ -238,9 +240,8 @@
         label {
             color: var(--white);
         }
-        
-        .contenedorSubtask {
 
+        .contenedorSubtask {
             .inputSubtask {
                 background-color: var(--dark-grey);
 
@@ -248,7 +249,6 @@
                     color: var(--white);
                 }
             }
-
         }
 
         .addNewSubtask {
@@ -294,7 +294,7 @@
 
         .selectStatus {
             background-color: var(--dark-grey);
-        
+
             select {
                 color: var(--white);
             }
@@ -315,9 +315,12 @@
         align-items: center;
         justify-content: center;
         margin-top: 10px;
+        @include mq.mediaMobile() {
+            padding: 10px 0;
+        }
+
     }
 }
-
 
 .contenedor_dark {
     background-color: var(--dark-grey);

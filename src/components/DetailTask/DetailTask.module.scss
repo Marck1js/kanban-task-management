@@ -1,3 +1,5 @@
+@use "../media_queries" as mq;
+
 .position {
     width: 100%;
     height: 100vh;
@@ -19,8 +21,19 @@
     }
 }
 
+@keyframes appearMobile {
+    from {
+        opacity: 0;
+        left: -100px;
+    }
+
+    to {
+        opacity: 1;
+        left: 0;
+    }
+}
+
 .contenedor {
-    // outline: 1px solid red;
     width: 480px;
     height: max-content;
     border-radius: 6px;
@@ -33,7 +46,13 @@
     bottom: 0;
     margin: auto;
     z-index: 100;
-   
+
+    @include mq.mediaMobile() {
+        animation: appearMobile 250ms linear;
+        width: 95%;
+        padding: 16px;
+    }
+
     .overview {
         display: flex;
         align-items: center;
@@ -70,9 +89,9 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-              
+
                 border-radius: 8px;
-               
+
                 button {
                     display: flex;
                     align-items: center;
@@ -103,7 +122,6 @@
                     }
                 }
             }
-
         }
     }
 
@@ -123,7 +141,7 @@
         flex-direction: column;
         gap: 5px;
         margin-bottom: 5px;
-        
+
         .subtasksRemaining {
             font-size: 12px;
             font-weight: 700;
@@ -222,5 +240,3 @@
 .contenedor_dark {
     background-color: var(--dark-grey);
 }
-
-

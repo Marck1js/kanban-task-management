@@ -2,7 +2,19 @@ $tablet: 768px;
 $mobile: 576px;
 
 @mixin mediaTablet () {
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: $tablet) {
         @content;
     }
 } 
+
+@mixin mediaMobile () {
+    @media only screen and (max-width: $mobile) {
+        @content;
+    }
+} 
+
+@mixin mediaCustom($valor: $mobile) {
+    @media only screen and (max-width: $valor) {
+        @content;
+    }
+}   

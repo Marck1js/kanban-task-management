@@ -1,5 +1,4 @@
-@use '../media_queries' as mq;
-
+@use "../media_queries" as mq;
 
 .contenedor {
     height: 96px;
@@ -7,6 +6,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @include mq.mediaMobile() {
+        display: none;
+    }
 
     @include mq.mediaTablet() {
         height: 80px;
@@ -23,10 +26,9 @@
 
         @include mq.mediaTablet() {
             width: 260px;
+            min-width: 260px;
         }
     }
-   
-   
 
     .logoTop_dark {
         background-color: var(--dark-grey);
@@ -45,11 +47,9 @@
         color: var(--dark);
         font-size: 24px;
         font-weight: 700;
-
         @include mq.mediaTablet() {
             font-size: 20px;
         }
-
     }
 
     .addNewTask {
@@ -59,11 +59,9 @@
         column-gap: 10px;
         position: relative;
 
-
-
         .buttonAddTask:disabled {
             cursor: not-allowed;
-            opacity: .5;
+            opacity: 0.5;
         }
         .buttonAddTask {
             // opacity: 0.5;
@@ -82,10 +80,9 @@
             }
         }
 
-
         .verticalEllipsis:disabled {
             cursor: not-allowed;
-            opacity: .5;
+            opacity: 0.5;
         }
         .verticalEllipsis {
             display: flex;
@@ -102,7 +99,6 @@
                 filter: drop-shadow(0 1px 5px rgba(0, 0, 0, 0.7));
             }
         }
-   
     }
 }
 

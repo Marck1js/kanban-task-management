@@ -1,3 +1,5 @@
+@use "../media_queries" as mq;
+
 .contenedor {
     flex: 1;
     height: 100%;
@@ -7,6 +9,11 @@
     overflow: scroll;
     scrollbar-width: none;
     background-color: var(--light-grey-light-bg);
+
+    @include mq.mediaMobile() {
+        padding: 0 5px;
+    }
+
     .addNewColumn {
         min-width: 280px;
         cursor: pointer;
@@ -25,7 +32,6 @@
         background: linear-gradient(180deg, rgba(43, 44, 55, 0.25) 0%, rgba(43, 44, 55, 0.13) 100%);
     }
 }
-
 
 .contenedor_dark {
     background-color: var(--very-dark-grey-dark-bg);

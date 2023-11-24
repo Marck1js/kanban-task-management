@@ -1,0 +1,92 @@
+@use "../media_queries" as mq;
+
+.contenedor {
+    height: 64px;
+    width: 100%;
+    background-color: var(--white);
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    left: 0;
+
+    @include mq.mediaMobile() {
+        display: flex;
+    }
+
+    .leftPart {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        margin-left: 10px;
+
+        .logoTop {
+            min-width: 25px;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transform: rotate(0deg);
+            transition: transform 250ms linear;
+        }
+
+        .logoTop_rotate {
+            transform: rotate(180deg);
+            transition: transform 250ms linear;
+        }
+
+        .boardText {
+            height: 64px;
+            text-align: center;
+            border: none;
+            background-color: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10x;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--black);
+        }
+    }
+
+    .rightPart {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin-right: 10px;
+        .addBtn {
+            width: 48px;
+            height: 32px;
+            border: none;
+            border-radius: 24px;
+            background-color: var(--main-purple);
+            color: var(--white);
+            font-weight: 800z;
+        }
+
+        .logoTop {
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+    }
+}
+
+.contenedor_dark {
+    background-color: var(--dark-grey);
+
+    .leftPart {
+        .boardText_dark {
+            color: var(--white);
+        }
+    }
+}

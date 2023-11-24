@@ -1,3 +1,5 @@
+@use "../media_queries" as mq;
+
 .position {
     position: fixed;
     top: 0;
@@ -20,6 +22,19 @@
 //     }
 // }
 
+@keyframes appearMobile {
+    from {
+        opacity: 0;
+        left: -100px; 
+    }
+
+    to {
+        opacity: 1;
+        left: 0;
+    }
+}
+
+
 .contenedor {
     // outline: 1px solid black;
     // outline-offset: 8px;
@@ -39,6 +54,15 @@
     flex-direction: column;
     justify-content: space-between;
     z-index: 100;
+
+    @include mq.mediaMobile() {
+        animation: appearMobile 250ms linear;
+        min-height: 0px;
+        width: 95%;
+        height: 400px;
+        padding: 16px;
+        overflow: scroll;
+    }
 
     .addNewTask {
         font-size: 18px;
@@ -86,7 +110,6 @@
     }
 
     .sectionTitle_dark {
-
         label {
             color: var(--white);
         }
@@ -97,11 +120,8 @@
             input {
                 color: var(--white);
             }
-
         }
-
     }
-
 
     .sectionDescription {
         display: flex;
@@ -133,7 +153,7 @@
                 line-height: 20px;
                 border: none;
                 background-color: inherit;
-                
+
                 &::placeholder {
                     opacity: 0.25;
                 }
@@ -145,7 +165,6 @@
         }
     }
 
-
     .sectionDescription_dark {
         label {
             color: var(--white);
@@ -153,14 +172,12 @@
 
         .textarea {
             background-color: var(--dark-grey);
-        
+
             textarea {
                 color: var(--white);
             }
         }
-        
     }
-
 
     .sectionSubtasks {
         margin: 10px 0;
@@ -240,9 +257,8 @@
         label {
             color: var(--white);
         }
-        
-        .contenedorSubtask {
 
+        .contenedorSubtask {
             .inputSubtask {
                 background-color: var(--dark-grey);
 
@@ -250,7 +266,6 @@
                     color: var(--white);
                 }
             }
-
         }
 
         .addNewSubtask {
@@ -296,7 +311,7 @@
 
         .selectStatus {
             background-color: var(--dark-grey);
-        
+
             select {
                 color: var(--white);
             }
@@ -317,9 +332,11 @@
         align-items: center;
         justify-content: center;
         margin-top: 10px;
+        @include mq.mediaMobile() {
+            padding: 10px 0;
+        }
     }
 }
-
 
 .contenedor_dark {
     background-color: var(--dark-grey);
