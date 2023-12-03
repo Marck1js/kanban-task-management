@@ -19,7 +19,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 5px;
+        gap: 15px;
         margin-left: 10px;
 
         .logoTop {
@@ -60,14 +60,19 @@
         justify-content: center;
         gap: 15px;
         margin-right: 10px;
+        position: relative;
+
         .addBtn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
             width: 48px;
             height: 32px;
             border: none;
             border-radius: 24px;
             background-color: var(--main-purple);
-            color: var(--white);
-            font-weight: 800z;
+           
         }
 
         .logoTop {
@@ -77,6 +82,8 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            background-color: inherit;
+            border: none;
         }
     }
 }

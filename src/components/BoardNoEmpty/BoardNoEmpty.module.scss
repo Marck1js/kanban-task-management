@@ -9,9 +9,15 @@
     overflow: scroll;
     scrollbar-width: none;
     background-color: var(--light-grey-light-bg);
-
     @include mq.mediaMobile() {
         padding: 0 5px;
+    }
+
+    .dragDropContext {
+        display: flex;
+        gap: 5px;
+        // outline: 2px solid rebeccapurple;
+        // outline-offset: 6px;        
     }
 
     .addNewColumn {
@@ -36,3 +42,4 @@
 .contenedor_dark {
     background-color: var(--very-dark-grey-dark-bg);
 }
+

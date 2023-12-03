@@ -1,39 +1,42 @@
-'use client'
+"use client";
 
-import React, { useState } from 'react'
-import { useTheme } from '@/context/theme-provider';
-import style from './SubtaskCheck.module.scss';
-import { setSubtasksComplete } from '@/fetching';
+import React, { useState } from "react";
+import { useTheme } from "@/context/theme-provider";
+import style from "./SubtaskCheck.module.scss";
+import { setSubtasksComplete } from "@/fetching";
 
-const SubtaskCheck = ({title,isCompleted, changeValue}) => {
-    const { isDarkMode: theme } = useTheme();
-   
-    return (
+const SubtaskCheck = ({ title, isCompleted, changeValue, disabled }) => {
+  const { isDarkMode: theme } = useTheme();
 
-        <button
-            className={
-                theme
-                    ? `${style.itemSubtask} ${style.itemSubtask_dark}`
-                    : `${style.itemSubtask}`
-            }
+  return (
+    <button
+      disabled={disabled}
+      className={
+        theme
+          ? `${style.itemSubtask} ${style.itemSubtask_dark}`
+          : `${style.itemSubtask}`
+      }
+    >
+      <label className={style.labelTask}>
+        <input
+          onClick={() => setSubtasksComplete(title)}
+          type="checkbox"
+          value={isCompleted}
+          checked={isCompleted}
+          onChange={changeValue}
+        />
+        <span
+          className={
+            isCompleted
+              ? `${style.todoSpan} ${style.todoSpan_done}`
+              : `${style.todoSpan}`
+          }
         >
-            <label className={style.labelTask}
-            >
-                <input 
-                onClick={() => setSubtasksComplete(title)}
-                type="checkbox" 
-                value={isCompleted}
-                checked={isCompleted}
-                onChange={changeValue}
-                />
-                <span className={ isCompleted ? `${style.todoSpan} ${style.todoSpan_done}` : `${style.todoSpan}` }>
-                    {title}
-                </span>
-            </label>
-        </button>
+          {title}
+        </span>
+      </label>
+    </button>
+  );
+};
 
-
-    )
-}
-
-export default SubtaskCheck
+export default SubtaskCheck;

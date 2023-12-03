@@ -1,21 +1,18 @@
-'use client'
-
-import style from "./OverviewTask.module.scss"
+"use client";
+import style from "./OverviewTask.module.scss";
 import { useTheme } from "@/context/theme-provider";
 import { useState, useCallback } from "react";
-
 import { DeleteTask, DetailTask, EditTask } from "..";
 import { checkTrues } from "@/helpers";
+import { createPortal } from "react-dom";
+
 const Overview = ({ stepActivity = 1, detailsInfo, listColumns }) => {
-  
-  
   const { isDarkMode: theme } = useTheme();
   const [portalDetail, setPortalDetail] = useState(false);
   const [editTask, setEditTask] = useState(false);
   const [delTask, setDelTask] = useState(false);
   const [tareas, setTareas] = useState([...detailsInfo.subtasks]);
   const truesCheck = useCallback(checkTrues(tareas), [tareas]);
-
 
   const detailTaskProps = {
     listColumns,
@@ -25,22 +22,19 @@ const Overview = ({ stepActivity = 1, detailsInfo, listColumns }) => {
     detailsInfo,
     textOverview: detailsInfo.title,
     setPortalDetail,
-    setDelTask:() => {
-      setPortalDetail(false)
-      setDelTask(true)
+    setDelTask: () => {
+      setPortalDetail(false);
+      setDelTask(true);
     },
-    setEditTask :() => {
-      setPortalDetail(false)
-      setEditTask(true)
-    }
-  }
-
-
+    setEditTask: () => {
+      setPortalDetail(false);
+      setEditTask(true);
+    },
+  };
 
   return (
     <>
       <div
-        draggable
         onClick={() => setPortalDetail(!portalDetail)}
         className={
           theme
@@ -49,33 +43,22 @@ const Overview = ({ stepActivity = 1, detailsInfo, listColumns }) => {
         }
       >
         <p className={style.nameActivity}>{detailsInfo.title}</p>
-        <p className={style.stepActivity}> {truesCheck} of {detailsInfo.subtasks.length} substasks</p>
+        <p className={style.stepActivity}>
+          {" "}
+          {truesCheck} of {detailsInfo.subtasks.length} substasks
+        </p>
       </div>
       {
-        portalDetail &&
-        <DetailTask
-        detailTaskProps={detailTaskProps}
-       />
+      
+      portalDetail && <DetailTask detailTaskProps={detailTaskProps} />
       }
 
-      {
-        delTask &&
-        <DeleteTask
-          taskActive={detailsInfo.title}
-          setDelTask={setDelTask}
-        />
-      }
+      {delTask && (
+        <DeleteTask taskActive={detailsInfo.title} setDelTask={setDelTask} />
+      )}
 
-      {
-        editTask &&
-        <EditTask
-          setEditTask={setEditTask}
-        />
-      }
-
-
+      {editTask && <EditTask setEditTask={setEditTask} />}
     </>
-
   );
 };
 

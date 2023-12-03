@@ -46,7 +46,6 @@
     bottom: 0;
     margin: auto;
     z-index: 100;
-
     @include mq.mediaMobile() {
         animation: appearMobile 250ms linear;
         width: 95%;

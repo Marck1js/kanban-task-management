@@ -8,6 +8,7 @@ export { default as KanbanLogoDark } from './KanbanLogoDark';
 export { default as KanbanLogoLight } from './KanbanLogoLight';
 export { default as KanbanMobileLogo } from './KanbanMobileLogo';
 export { default as LightMode } from './LightMode';
+export { default as Plus } from './Plus';
 export { default as ShowSidebar } from './ShowSidebar';
 export { default as VerticalEllipsis } from './VerticalEllipsis';
 export * from './index';

@@ -12,12 +12,18 @@ import {
 } from "@/svgComponents";
 import { AddNewBoard, DarkModeBar, NewBoard, EditBoard } from "..";
 import { useTheme } from "@/context/theme-provider";
+import { useBoards } from "@/store/boards";
 
 const Dashboard = ({ listBoards }) => {
- 
   const [showAddNewBoard, setShowAddNewBoard] = useState(false);
   const { isDarkMode: theme } = useTheme();
-  const boards = useRef(null)
+
+  const initialListBoard = useBoards((state) => state.initialListBoard);
+  useEffect(() => {
+    initialListBoard(listBoards);
+  }, [initialListBoard, listBoards]);
+
+  const boards = useRef(null);
 
   const hideSideBar = () => {
     let showSection = document.getElementById("showSection");
@@ -32,9 +38,7 @@ const Dashboard = ({ listBoards }) => {
     section.addEventListener("transitionend", funVisible);
   };
 
-
   const showSidebar = () => {
-
     let showSection = document.getElementById("showSection");
     let section = document.getElementById("section");
     showSection.style.visibility = `hidden`;
@@ -44,48 +48,50 @@ const Dashboard = ({ listBoards }) => {
   return (
     <>
       <section id="section" className={`${style.contenedor}`}>
-        <div id="cont" className={theme ? `${style.containerSidebar} ${style.containerSidebar_dark}` : `${style.containerSidebar}`}>
+        <div
+          id="cont"
+          className={
+            theme
+              ? `${style.containerSidebar} ${style.containerSidebar_dark}`
+              : `${style.containerSidebar}`
+          }
+        >
           <div className={style.menu}>
             <p className={style.boards}>
               all boards <span>({listBoards?.length ?? 0})</span>
             </p>
             <ul ref={boards} className={style.list}>
-
-              {
-                listBoards?.length > 0 && (
-                  listBoards.map((elem, idx) => {
-                    return (
-                      <NewBoard nameBoard={elem} active={idx == 0 ? true : false} key={idx} />
-                    )
-                  })
-                )
-              }
+              {listBoards?.length > 0 &&
+                listBoards.map((elem, idx) => {
+                  return (
+                    <NewBoard
+                      nameBoard={elem.name}
+                      active={idx == 0 ? true : false}
+                      key={idx}
+                    />
+                  );
+                })}
 
               {/* <NewBoard nameBoard={'Platform Launch'} active />
               <NewBoard nameBoard={'Marketing Plan'} />
               <NewBoard nameBoard={'RoadMap'} /> */}
 
-
               <li
                 onClick={() => setShowAddNewBoard(!showAddNewBoard)}
-                className={style.createNewBoard}>
+                className={style.createNewBoard}
+              >
                 <FluentBoard /> <span>+ Create New Board</span>
               </li>
             </ul>
           </div>
 
-          {
-            showAddNewBoard &&
+          {showAddNewBoard && (
             <AddNewBoard setShowAddNewBoard={setShowAddNewBoard} />
-          }
-
-
+          )}
 
           <div className={style.options}>
             <DarkModeBar />
-            <button
-              onClick={() => hideSideBar()}
-              className={style.sidebar}>
+            <button onClick={() => hideSideBar()} className={style.sidebar}>
               <EyeSlash />
               <span className={style.text}>Hide SideBar</span>
             </button>
@@ -95,7 +101,9 @@ const Dashboard = ({ listBoards }) => {
 
       <div
         onClick={() => showSidebar()}
-        id="showSection" className={style.showContenedor}>
+        id="showSection"
+        className={style.showContenedor}
+      >
         <ShowSidebar />
       </div>
     </>

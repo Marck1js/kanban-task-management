@@ -7,6 +7,7 @@ import { useTheme } from "@/context/theme-provider";
 import { AddNewTask, ButtonSetting, DeleteBoard, EditBoard } from "..";
 import { useRef, useState, useEffect } from "react";
 import { createPortal } from "react-dom";
+import Link from "next/link";
 const TopMenu = ({ boardActive }) => {
   const { isDarkMode: theme } = useTheme();
   const [showSettings, setShowSettings] = useState(false);
@@ -34,8 +35,9 @@ const TopMenu = ({ boardActive }) => {
               : `${style.logoTop}`
           }
         >
-          {theme ? <KanbanLogoDark /> : <KanbanLogoLight />}
+         {theme ? <KanbanLogoDark /> : <KanbanLogoLight />}
         </div>
+
         <div className={style.platformLaunch}>
           <p
             className={
@@ -43,6 +45,7 @@ const TopMenu = ({ boardActive }) => {
             }
           >
             {boardActive}
+            
           </p>
           <div className={style.addNewTask}>
             <button

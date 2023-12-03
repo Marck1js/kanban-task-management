@@ -1,31 +1,33 @@
+"use client";
 import React from "react";
 import style from "./Column.module.scss";
 import { OverviewTask, Tasking } from "..";
-const Column = ({ colorTask, nameTask, tasks,listColumns }) => {
+const Column = ({ colorTask, nameTask, tasks, listColumns,children }) => {
 
- 
   return (
     <div className={style.column}>
-      <Tasking color={colorTask} nameTask={nameTask} quantity={tasks?.length ?? 0} />
+      <Tasking
+        color={colorTask}
+        nameTask={nameTask}
+        quantity={tasks?.length ?? 0}
+      />
+     
+      {children}
+   {/* 
+        // ESTO SERIA EL CHILDREN SI NO SE MAPEA
       <div className={style.fieldDetail}>
-
-
-        {/* <OverviewTask nameActivity={"Build UI for search"} />
-        <OverviewTask nameActivity={"Desing UI for search"} />
-        <OverviewTask nameActivity={"Searching Database"} /> */}
-
-        {
-          tasks.length > 0 && (
-            tasks.map((elem, idx) => {
-              return (
-                <OverviewTask listColumns={listColumns} key={elem.id} detailsInfo={elem} />
-              )
-            })
-          )
-        }
-
-
-      </div>
+        {tasks.length > 0 &&
+          tasks.map((elem, idx) => {
+            return (
+              <OverviewTask
+                key={elem.id}
+                listColumns={listColumns}
+                detailsInfo={elem}
+              />
+            );
+          })}
+      </div> 
+      */}
     </div>
   );
 };

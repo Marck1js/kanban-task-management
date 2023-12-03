@@ -20,3 +20,19 @@ export function checkTrues(array) {
 		}
 	}, 0)
 };
+
+export const reorder = (list, startIndex, endIndex) => {
+    console.log(list);
+    const result = [...list];
+    const [removed] = result.splice(startIndex,1 );
+    result.splice(endIndex, 0, removed);
+    return result;
+}
+
+
+export const convertirTexto = (texto) => {
+    return texto.toLowerCase() // Convertir texto a minúsculas
+    .replace(/\s+/g, '-') // Reemplaza espacios por guiones
+    .replace(/-{2,}/g, '-'); // Reemplaza múltiples guiones por uno solo
+}
+  

@@ -1,9 +1,7 @@
 .column {
     min-width: 280px;
     height: 100%;
-    .fieldDetail {
-        height: calc(100% - 45px);
-        overflow-y: auto;
-        scrollbar-width: none;
-    }
+    // outline: 2px solid red;
+    overflow-y: auto;
+    scrollbar-width: none;
 }

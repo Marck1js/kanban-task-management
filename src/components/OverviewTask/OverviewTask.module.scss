@@ -2,7 +2,7 @@
 
 .overviewTask {
     width: 280px;
-    cursor: grab;
+    cursor: default;
     margin: 10px 0;
     padding: 5px 10px;
     border-radius: 8px;
@@ -43,7 +43,7 @@
     background-color: var(--dark-grey);
 
     &:active {
-        border: 2px dashed var(--lines-light);
+        border: 2px solid var(--lines-light);
     }
 
     .nameActivity {

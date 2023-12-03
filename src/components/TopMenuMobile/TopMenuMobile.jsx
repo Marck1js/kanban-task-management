@@ -6,8 +6,9 @@ import {
   IconChevronDown,
   KanbanMobileLogo,
   VerticalEllipsis,
+  Plus
 } from "@/svgComponents";
-import { AddNewTask, DashboardMobile } from "..";
+import { AddNewTask, ButtonSetting, DashboardMobile, DeleteBoard, EditBoard } from "..";
 import { useTheme } from "@/context/theme-provider";
 
 const TopMenuMobile = ({ boardActive, listBoards }) => {
@@ -15,6 +16,13 @@ const TopMenuMobile = ({ boardActive, listBoards }) => {
 
   const [portalAddNewTask, setPortalAddNewTask] = useState(false);
   const [showDashboardMobile, setShowDashboardMobile] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  const [editBoard, setEditBoard] = useState(false);
+  const [delBoard, setDelBoard] = useState(false);
+  const styleBtnSetting = {
+    top: 45 + "px",
+    right: -5 + "px",
+  };
 
   return (
     <>
@@ -45,15 +53,13 @@ const TopMenuMobile = ({ boardActive, listBoards }) => {
             }
             onClick={() => setShowDashboardMobile(true)}
           >
-            Platform Launch
-            <span 
-            // className={style.logoTop}
-            className={
-              showDashboardMobile
-                ? `${style.logoTop} ${style.logoTop_rotate}`
-                : `${style.logoTop}`
-            }
-            
+           {boardActive}
+            <span
+              className={
+                showDashboardMobile
+                  ? `${style.logoTop} ${style.logoTop_rotate}`
+                  : `${style.logoTop}`
+              }
             >
               <IconChevronDown />
             </span>
@@ -65,20 +71,40 @@ const TopMenuMobile = ({ boardActive, listBoards }) => {
             onClick={() => setPortalAddNewTask(!portalAddNewTask)}
             className={style.addBtn}
           >
-            +
+            <Plus/>
           </button>
 
-          <div className={style.logoTop}>
+          <button
+            className={style.logoTop}
+            onClick={() => setShowSettings(!showSettings)}
+          >
             <VerticalEllipsis />
-          </div>
+          </button>
+
+          {showSettings && (
+            <ButtonSetting
+              setShowSettings={setShowSettings}
+              measures={styleBtnSetting}
+              onEdit={() => {
+                setEditBoard(true);
+              }}
+              onDelete={() => {
+                setDelBoard(true);
+              }}
+            />
+          )}
         </div>
       </div>
 
-      {portalAddNewTask &&
+      {portalAddNewTask ?
         createPortal(
           <AddNewTask setPortalAddNewTask={setPortalAddNewTask} />,
           document.body
-        )}
+        )  : null }
+
+      {editBoard ? <EditBoard setEditBoard={setEditBoard} /> : null}
+
+      {delBoard ? <DeleteBoard boardActive={boardActive} setDelBoard={setDelBoard} /> : null }
     </>
   );
 };
