@@ -1,0 +1,19 @@
+@use '../media_queries' as mq;
+
+
+.main {
+    display: flex;
+    justify-content: flex-start;
+    background-color: var(--light-grey-light-bg);
+    height: calc(100vh - 96px);
+
+    @include mq.mediaTablet() {
+        height: calc(100vh - 80px);
+    }
+    @include mq.mediaMobile() {
+        height: calc(100vh - 64px);
+    }
+}
+.main_dark {
+    background-color: var(--very-dark-grey-dark-bg);
+}

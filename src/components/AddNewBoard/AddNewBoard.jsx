@@ -7,6 +7,7 @@ import { IconCross } from "@/svgComponents";
 import { Toaster, toast } from "sonner";
 import { SubInputs } from "..";
 import { postNewBoard } from "@/fetching";
+import { useRouter } from "next/navigation";
 const AddNewBoard = ({ setShowAddNewBoard }) => {
   const { isDarkMode: theme } = useTheme();
 
@@ -16,9 +17,9 @@ const AddNewBoard = ({ setShowAddNewBoard }) => {
 
   const [form, setForm] = useState({
     name: "",
-    columns: ["", ""],
+    columns: ["Todo", "Doing"],
   });
-
+  const router = useRouter();
   const onHandleChange = (e) => {
     let { name, value } = e.target;
     let index = parseInt(name);
@@ -30,6 +31,15 @@ const AddNewBoard = ({ setShowAddNewBoard }) => {
         ...prev,
         columns: updateCol,
       };
+    });
+  };
+
+  const deleteInput = (e) => {
+    const newColumn = [...form.columns];
+    newColumn.splice(e, 1);
+    setForm({
+      ...form,
+      columns: newColumn,
     });
   };
 
@@ -51,9 +61,12 @@ const AddNewBoard = ({ setShowAddNewBoard }) => {
 
       setForm({
         name: "",
-        columns: ["", ""],
+        columns: ["Todo", "Doing"],
       });
       setSending(false);
+      // setTimeout(() => {
+      //   router.push(`/${form.name}`);
+      // }, 1);
     }, 4000);
   };
 
@@ -117,6 +130,8 @@ const AddNewBoard = ({ setShowAddNewBoard }) => {
             {form.columns.length > 0 &&
               form.columns.map((column, index) => (
                 <SubInputs
+                  deleteInput={deleteInput}
+                  id={index}
                   placeholder={"e.g. Todo"}
                   value={column}
                   key={index}
@@ -153,6 +168,7 @@ const AddNewBoard = ({ setShowAddNewBoard }) => {
             disabled={sending}
             className={style.createTask}
             onClick={() => promise()}
+            // onClick={() => console.log(form)}
           >
             Create New Board
           </button>

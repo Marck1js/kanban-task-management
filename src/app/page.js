@@ -5,28 +5,35 @@ import {
   BoardNoEmpty,
   Dashboard,
   DashboardMobile,
+  MainContent,
   TopMenu,
   TopMenuMobile,
 } from "@/components";
-import { getBoards,getListBoards } from "@/fetching";
+import { getBoards, getListBoards } from "@/fetching";
 import { Suspense } from "react";
 
-const page = async ({children}) => {
+const page = async ({ children, children2, params }) => {
   const data = await getBoards();
   // const listBoards = await data?.map((e) => e.name);
   const list = await getListBoards();
 
   console.log(list);
   return (
-<section className={style.contenedor}>
-      <TopMenu boardActive={data?.[0]?.name ?? null} />
-      <TopMenuMobile
-        // listBoards={listBoards}
-        boardActive={data?.[0]?.name ?? null}
-      />
+    <section className={style.contenedor}>
+      {children}
+      {!children && (
+        <>
+          <TopMenu boardActive={data?.[0]?.name ?? null} />
+          <TopMenuMobile
+            // listBoards={listBoards}
+            boardActive={data?.[0]?.name ?? null}
+          />
+        </>
+      )}
+
       <div className={style.main}>
-        <Dashboard listBoards={list} />   
-        {children}
+        <Dashboard listBoards={list} />
+        <MainContent/>
         {/* {data ? (
           // <Suspense fallback={<div>loading</div>}>
              <BoardNoEmpty data={data} />

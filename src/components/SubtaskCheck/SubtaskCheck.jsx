@@ -22,7 +22,7 @@ const SubtaskCheck = ({ title, isCompleted, changeValue, disabled }) => {
           onClick={() => setSubtasksComplete(title)}
           type="checkbox"
           value={isCompleted}
-          checked={isCompleted}
+          checked={isCompleted} 
           onChange={changeValue}
         />
         <span

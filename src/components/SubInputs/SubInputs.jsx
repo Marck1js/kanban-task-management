@@ -2,7 +2,14 @@ import React from "react";
 import style from "./SubInputs.module.scss";
 import { IconCross } from "@/svgComponents";
 import { useTheme } from "@/context/theme-provider";
-const SubInputs = ({ value, onHandleChange, name, placeholder }) => {
+const SubInputs = ({
+  value,
+  onHandleChange,
+  name,
+  placeholder,
+  id,
+  deleteInput,
+}) => {
   const { isDarkMode: theme } = useTheme();
 
   return (
@@ -13,7 +20,13 @@ const SubInputs = ({ value, onHandleChange, name, placeholder }) => {
           : `${style.contenedorSubtask}`
       }
     >
-      <div className={style.inputSubtask}>
+      <div
+        className={
+          !value
+            ? `${style.inputSubtask} ${style.inputSubtask_error}`
+            : `${style.inputSubtask}`
+        }
+      >
         <input
           name={name}
           placeholder={placeholder}
@@ -21,7 +34,8 @@ const SubInputs = ({ value, onHandleChange, name, placeholder }) => {
           onChange={onHandleChange}
         />
       </div>
-      <button className={style.iconStyle}>
+      {!value && <span className={style.error}>Can't be empty</span>}
+      <button onClick={() => deleteInput(id)} className={style.iconStyle}>
         <IconCross />
       </button>
     </div>

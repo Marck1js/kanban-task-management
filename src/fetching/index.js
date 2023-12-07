@@ -51,6 +51,8 @@ export const setSubtasksComplete = async (id) => {
 };
 
 export const postNewBoard = async (object) => {
+
+
   const result = await fetch(`${localhost}${addBoard}`, {
     method: "POST",
     headers: {

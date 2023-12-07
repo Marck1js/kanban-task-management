@@ -1,6 +1,13 @@
-import React, { use } from "react";
+import React from "react";
 import { getBoards } from "@/fetching";
-import { BoardEmpty, BoardNoEmpty } from "@/components";
+import {
+  BoardEmpty,
+  BoardNoEmpty,
+  MainContent,
+  MainTopMenu,
+  TopMenu,
+  TopMenuMobile,
+} from "@/components";
 
 const page = async ({ params }) => {
   const { boards } = params;
@@ -8,15 +15,25 @@ const page = async ({ params }) => {
   const data = await getBoards(boards);
   const listBoards = await data?.map((e) => e.name);
 
-  console.log(data[0].columns.length);
+  console.log(data);
 
   return (
     <>
-      {data[0].columns.length > 0 ? (
-        <BoardNoEmpty data={data} />
-      ) : (
-        <BoardEmpty thereIs={data ? true : false} />
-      )}
+      <MainTopMenu>
+        <TopMenu boardActive={data?.[0]?.name ?? null} />
+        <TopMenuMobile
+          // listBoards={listBoards}
+          boardActive={data?.[0]?.name ?? null}
+        />
+      </MainTopMenu>
+
+      <MainContent>
+        {data[0].columns.length > 0 ? (
+          <BoardNoEmpty data={data} />
+        ) : (
+          <BoardEmpty thereIs={data ? true : false} />
+        )}
+      </MainContent>
     </>
   );
 };
