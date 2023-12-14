@@ -1,4 +1,6 @@
-const localhost = "http://localhost:6600";
+import { revalidateTag } from "next/cache";
+
+const localhost = "http://localhost:6500";
 const boards = "/boards";
 const listBoards = "/listBoards";
 const addBoard = "/add/board";
@@ -51,9 +53,8 @@ export const setSubtasksComplete = async (id) => {
 };
 
 export const postNewBoard = async (object) => {
-
-
   const result = await fetch(`${localhost}${addBoard}`, {
+    cache: "no-cache",
     method: "POST",
     headers: {
       "Content-Type": "application/json",

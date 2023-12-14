@@ -1,5 +1,5 @@
 "use client";
-
+import { revalidateTag } from "next/cache";
 import React, { useState } from "react";
 import style from "./AddNewBoard.module.scss";
 import { useTheme } from "@/context/theme-provider";
@@ -44,6 +44,7 @@ const AddNewBoard = ({ setShowAddNewBoard }) => {
   };
 
   const promise = async () => {
+    
     setSending(true);
     setTimeout(async () => {
       console.log("creating...");
@@ -55,9 +56,11 @@ const AddNewBoard = ({ setShowAddNewBoard }) => {
         })
         // .catch((Error) => toast.error(Error));
         .catch((error) => {
-          const parsedError = JSON.parse(error.message);
-          toast.error(parsedError.msg); // Manejo del error como objeto JSON
+          console.log(error)
+          // const parsedError = JSON.parse(error.message);
+          // toast.error(parsedError.msg); // Manejo del error como objeto JSON
         });
+        revalidateTag('board')
 
       setForm({
         name: "",

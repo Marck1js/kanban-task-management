@@ -12,16 +12,17 @@ import {
 } from "@/svgComponents";
 import { AddNewBoard, DarkModeBar, NewBoard, EditBoard } from "..";
 import { useTheme } from "@/context/theme-provider";
-import { useBoards } from "@/store/boards";
+import { useBoards } from "@/store";
+import { usePathname } from "next/navigation";
+import { convertirTexto } from "@/helpers";
 
 const Dashboard = ({ listBoards }) => {
   const [showAddNewBoard, setShowAddNewBoard] = useState(false);
   const { isDarkMode: theme } = useTheme();
 
-  const initialListBoard = useBoards((state) => state.initialListBoard);
-  useEffect(() => {
-    initialListBoard(listBoards);
-  }, [initialListBoard, listBoards]);
+  const pathname = usePathname();
+
+
 
   const boards = useRef(null);
 
@@ -66,7 +67,9 @@ const Dashboard = ({ listBoards }) => {
                   return (
                     <NewBoard
                       nameBoard={elem.name}
-                      active={idx == 0 ? true : false}
+                      active={
+                        pathname.split("/")[1] == convertirTexto(elem.name)
+                      }
                       key={idx}
                     />
                   );

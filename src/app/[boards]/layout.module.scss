@@ -1,19 +1,9 @@
-@use '../media_queries' as mq;
-
-
+@use '../../components/media_queries' as mq;
 .main {
     display: flex;
-    align-items: center;
-    flex: 1;
-    justify-content: center;
+    justify-content: flex-start;
     background-color: var(--light-grey-light-bg);
     height: calc(100vh - 96px);
-
-    p {
-        color: var(--medium-grey);
-        font-size: 18px;
-        font-weight: 700;
-    }
 
     @include mq.mediaTablet() {
         height: calc(100vh - 80px);

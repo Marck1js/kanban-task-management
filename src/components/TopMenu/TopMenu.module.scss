@@ -47,6 +47,7 @@
         color: var(--dark);
         font-size: 24px;
         font-weight: 700;
+        text-transform: capitalize;
         @include mq.mediaTablet() {
             font-size: 20px;
         }

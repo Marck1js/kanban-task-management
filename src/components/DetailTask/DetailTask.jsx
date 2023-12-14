@@ -117,50 +117,6 @@ const DetailTask = ({ detailTaskProps, data }) => {
               );
             })}
 
-          {/* <div
-            className={
-              theme
-                ? `${style.itemSubtask} ${style.itemSubtask_dark}`
-                : `${style.itemSubtask}`
-            }
-          >
-            <label className={style.labelTask}>
-              <input type="checkbox" />
-              <span className={`${style.todoSpan} ${style.todoSpan_done}`}>
-                Research competitor pricing and business models
-              </span>
-            </label>
-          </div> 
-
-          <div
-            className={
-              theme
-                ? `${style.itemSubtask} ${style.itemSubtask_dark}`
-                : `${style.itemSubtask}`
-            }
-          >
-            <label className={style.labelTask}>
-              <input type="checkbox" />
-              <span className={`${style.todoSpan} ${style.todoSpan_done}`}>
-                Research competitor pricing and business models
-              </span>
-            </label>
-          </div>
-
-          <div
-            className={
-              theme
-                ? `${style.itemSubtask} ${style.itemSubtask_dark}`
-                : `${style.itemSubtask}`
-            }
-          >
-            <label className={style.labelTask}>
-              <input type="checkbox" />
-              <span className={`${style.todoSpan} `}>
-                Research competitor pricing and business models
-              </span>
-            </label>
-          </div> */}
         </div>
 
         {/* Current Status */}
@@ -191,15 +147,3 @@ const DetailTask = ({ detailTaskProps, data }) => {
 
 export default DetailTask;
 
-// <div
-
-// className={
-//   theme
-//     ? `${style.optionsSettings} ${style.optionsSettings_dark}`
-//     : `${style.optionsSettings}`
-// }
-
-// >
-//   <button className={style.optionEdit}>Edit Task</button>
-//   <button className={style.optionDelete}>Delete Task</button>
-// </div>

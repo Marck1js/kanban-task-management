@@ -12,12 +12,13 @@ import {
 import { getBoards, getListBoards } from "@/fetching";
 import { Suspense } from "react";
 
-const page = async ({ children, children2, params }) => {
+const page = async ({ children }) => {
   const data = await getBoards();
+
   // const listBoards = await data?.map((e) => e.name);
   const list = await getListBoards();
 
-  console.log(list);
+  // console.log(list);
   return (
     <section className={style.contenedor}>
       {children}
@@ -33,7 +34,9 @@ const page = async ({ children, children2, params }) => {
 
       <div className={style.main}>
         <Dashboard listBoards={list} />
-        <MainContent/>
+        <MainContent>
+          <p>Let's started, please select or create a new board</p>
+        </MainContent>
         {/* {data ? (
           // <Suspense fallback={<div>loading</div>}>
              <BoardNoEmpty data={data} />

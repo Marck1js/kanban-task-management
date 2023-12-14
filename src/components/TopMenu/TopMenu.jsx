@@ -35,7 +35,9 @@ const TopMenu = ({ boardActive }) => {
               : `${style.logoTop}`
           }
         >
+         <Link href={'/'}>
          {theme ? <KanbanLogoDark /> : <KanbanLogoLight />}
+         </Link>
         </div>
 
         <div className={style.platformLaunch}>
@@ -44,7 +46,7 @@ const TopMenu = ({ boardActive }) => {
               theme ? `${style.text} ${style.text_dark}` : `${style.text}`
             }
           >
-            {boardActive}
+            {boardActive?.toLowerCase()}
             
           </p>
           <div className={style.addNewTask}>

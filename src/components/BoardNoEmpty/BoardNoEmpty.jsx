@@ -5,18 +5,16 @@ import { useTheme } from "@/context/theme-provider";
 import { useEffect, useState } from "react";
 import { colorRGBAleatorio as RGB } from "@/helpers";
 import { reorder } from "@/helpers";
-import { useBoards } from "@/store/boards";
+import { useBoards } from "@/store";
 import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
 import Overview from "../OverviewTask/OverviewTask";
 const BoardNoEmpty = ({ data }) => {
   const { isDarkMode: theme } = useTheme();
   const [editBoard, setEditBoard] = useState(false);
   const [platformBoard, setPlatformBoard] = useState(data[0].columns);
-  const columnPerUser = useBoards((state) => state.columnPerUser);
-  const setColumnPerUser = useBoards((state) => state.setColumnPerUser);
+
 
   const handleDragTask = (result) => {
-    console.log(result);
     const { source, destination, type } = result;
     if (!destination) return;
     if (
@@ -62,12 +60,13 @@ const BoardNoEmpty = ({ data }) => {
         }
       >
         <DragDropContext
+         
           onDragEnd={handleDragTask}
         >
           <div className={style.dragDropContext}>
             {platformBoard.map((elem, index) => (
               <Droppable key={index} droppableId={index.toString()}>
-                {(providedDrop) => (
+                {(providedDrop, snapshot) => (
                   <div
                     {...providedDrop.droppableProps}
                     ref={providedDrop.innerRef}
@@ -75,7 +74,7 @@ const BoardNoEmpty = ({ data }) => {
                     <Column
                       listColumns={platformBoard.map((e) => e.name)}
                       key={elem.id}
-                      colorTask={"d1ef39"}
+                      colorTask={"ff0000"}
                       nameTask={elem.name}
                       tasks={elem.tasks}
                     >
@@ -86,6 +85,7 @@ const BoardNoEmpty = ({ data }) => {
                           index={idx}
                         >
                           {(providedDrag, snapshot) => (
+                           
                             <div
                               {...providedDrag.dragHandleProps}
                               {...providedDrag.draggableProps}
@@ -109,34 +109,7 @@ const BoardNoEmpty = ({ data }) => {
             ))}
           </div>
         </DragDropContext>
-
-        {/* Copia ante del DnD por si sale mal */}
-        {/* <div className={style.dragDropContext}>
-          {platformBoard &&
-            platformBoard.map((elem, idx) => {
-              console.log(elem.name);
-              return (
-                <Column
-                  listColumns={platformBoard.map((e) => e.name)}
-                  key={elem.id}
-                  colorTask={"336699"}
-                  nameTask={elem.name}
-                  tasks={elem.tasks}
-                />
-              );
-            })}
-        </div> */}
-
-        {/* 
-         <Column
-                  listColumns={platformBoard.map((e) => e.name)}
-                  key={elem.id}
-                  colorTask={"336699"}
-                  nameTask={elem.name}
-                  tasks={elem.tasks}
-                />
-       */}
-
+        
         {/* Button Add Column */}
         <button
           onClick={() => setEditBoard(true)}

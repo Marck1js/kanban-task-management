@@ -32,10 +32,15 @@ const Overview = ({ stepActivity = 1, detailsInfo, listColumns }) => {
     },
   };
 
+  const handleClick = (e) => {
+    
+    setPortalDetail(!portalDetail)
+  }
+
   return (
     <>
       <div
-        onClick={() => setPortalDetail(!portalDetail)}
+        onClick={(e) => handleClick(e)}
         className={
           theme
             ? `${style.overviewTask} ${style.overviewTask_dark}`

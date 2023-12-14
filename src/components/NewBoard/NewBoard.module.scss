@@ -22,8 +22,17 @@
         padding: 14px 0;
         height: max-content;
         text-decoration: none;
+        
+       
+
     }
+   
+    span {
+        color: var(--medium-grey);
+    }
+
 }
+
 .newBoard_active {
     background-color: var(--main-purple);
 
