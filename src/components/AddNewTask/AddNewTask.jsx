@@ -1,4 +1,5 @@
-import React from "react";
+'use client'
+import React, {useState} from "react";
 import style from "./AddNewTask.module.scss";
 import { IconCross } from "@/svgComponents";
 import { useTheme } from '@/context/theme-provider'
@@ -6,10 +7,17 @@ const AddNewTask = ({ setPortalAddNewTask }) => {
 
   const { isDarkMode: theme } = useTheme();
 
+  const [form, setForm] = useState({
+    title: '',
+    description: '',
+    status:'',
+    subtask: []
+  });
+
+
   return (
     <>
       <div onClick={() => setPortalAddNewTask(false)} className={style.position}></div>
-
 
       <div
         // className={style.contenedor}

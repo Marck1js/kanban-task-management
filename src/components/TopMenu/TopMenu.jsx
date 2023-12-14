@@ -83,7 +83,7 @@ const TopMenu = ({ boardActive }) => {
 
       {portalAddNewTask &&
         createPortal(
-          <AddNewTask setPortalAddNewTask={setPortalAddNewTask} />,
+          <AddNewTask setPortalAddNewTask={setPortalAddNewTask}  />,
           document.body
         )}
 

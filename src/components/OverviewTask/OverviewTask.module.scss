@@ -16,16 +16,16 @@
     gap: 5px;
     user-select: none;
     border: 2px dotted transparent;
-    &:active {
-        cursor: grabbing;
-        border: 2px dashed var(--lines-dark);
-    }
+    // &:active {
+    //     cursor: grabbing;
+    //     border: 2px dashed var(--lines-dark);
+    // }
 
     @include mq.mediaTablet() {
-        &:active {
-            cursor: default;
-            border: none;
-        }
+        // &:active {
+        //     cursor: default;
+        //     border: none;
+        // }
     }
     .nameActivity {
         font-size: 15px;
@@ -42,9 +42,9 @@
 .overviewTask_dark {
     background-color: var(--dark-grey);
 
-    &:active {
-        border: 2px solid var(--lines-light);
-    }
+    // &:active {
+    //     border: 2px solid var(--lines-light);
+    // }
 
     .nameActivity {
         color: var(--white);

@@ -16,7 +16,7 @@ import { useRouter } from "next/navigation";
 const page = async ({ params }) => {
   const data = await getBoards(params.boards);
   console.log(data);
-  // console.log(params);
+
   return (
     <>
       {data?.msg ? (

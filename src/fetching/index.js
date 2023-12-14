@@ -17,7 +17,7 @@ export const getBoards = async (board) => {
       return e.json();
     })
     .catch((e) => {
-      return null;
+      return {msg: e};
     });
   return boards;
 };
@@ -70,6 +70,27 @@ export const postNewBoard = async (object) => {
     });
   return result;
 };
+
+
+
+// export const postNewTask = async (object) => {
+//   const result = await fetch(`${localhost}${addBoard}`, {
+//     cache: "no-cache",
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(object),
+//   })
+//     .then((e) => e.json()) 
+//     .then((e) => {
+//       if (e.status == "error") {
+//         throw new Error(JSON.stringify(e));
+//       }
+//       return e;
+//     });
+//   return result;
+// };
 
 // {
 //   "status": "Ok",
