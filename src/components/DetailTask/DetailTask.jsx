@@ -33,6 +33,14 @@ const DetailTask = ({ detailTaskProps, data }) => {
     right: 0 + "px",
   };
 
+
+  const handleVerticalEllipsis = (e) => {
+    console.log(e);
+    console.log('Estoy haciendo click');
+
+  };
+
+
   return (
     <>
       <div
@@ -60,7 +68,8 @@ const DetailTask = ({ detailTaskProps, data }) => {
           </p>
           <div className={style.boxSettings}>
             <button
-              onClick={() => setShowSettings(!showSettings)}
+              onClick={(e) => setShowSettings(!showSettings)}
+              // onClick={(e) => handleVerticalEllipsis(e)}
               className={style.settings}
             >
               <VerticalEllipsis />

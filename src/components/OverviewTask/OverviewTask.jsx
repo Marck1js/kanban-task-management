@@ -55,7 +55,10 @@ const Overview = ({ stepActivity = 1, detailsInfo, listColumns }) => {
       </div>
       {
       
-      portalDetail && <DetailTask detailTaskProps={detailTaskProps} />
+      portalDetail && 
+      // createPortal(
+      <DetailTask detailTaskProps={detailTaskProps}/> 
+      // , document.body )
       }
 
       {delTask && (

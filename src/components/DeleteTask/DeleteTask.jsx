@@ -2,7 +2,7 @@ import React from 'react'
 import { useTheme } from '@/context/theme-provider'
 import style from './DeleteTask.module.scss';
 
-const DeleteTask = ({ setDelTask, taskActive}) => {
+const DeleteTask = ({ setDelTask, taskActive }) => {
     const { isDarkMode: theme } = useTheme();
     return (
         <>
@@ -28,7 +28,8 @@ const DeleteTask = ({ setDelTask, taskActive}) => {
                     }
 
 
-                >Delete this task?</p>
+                >Delete this task?
+                </p>
 
                 <p
 
@@ -38,12 +39,17 @@ const DeleteTask = ({ setDelTask, taskActive}) => {
                             : `${style.briefTextWarning}`
                     }
 
-
                 >Are you sure you want to delete the '{taskActive}' task and its subtasks? This action cannot be reversed.</p>
 
                 <div className={style.actionButtons}>
-                    <button className={style.delBtn}>Delete</button>
-                    <button className={style.cancelBtn}>Cancel</button>
+                    <button
+                        onClick={() => {
+                            console.log('Estas eliminando la carta');
+                        }}
+                        className={style.delBtn}>Delete</button>
+                    <button
+                        onClick={() => setDelTask(false)}
+                        className={style.cancelBtn}>Cancel</button>
 
                 </div>
             </div>

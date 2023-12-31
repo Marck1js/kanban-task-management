@@ -1,5 +1,6 @@
 import ThemeProvider from "../context/theme-provider";
 import { Plus_Jakarta_Sans as Plus } from "next/font/google";
+
 import { Toaster } from "sonner";
 const plus = Plus({ weight: ["300", "400", "500", "700"], subsets: ["latin"] });
 
