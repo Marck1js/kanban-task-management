@@ -60,7 +60,7 @@ const AddNewBoard = ({ setShowAddNewBoard }) => {
           // const parsedError = JSON.parse(error.message);
           // toast.error(parsedError.msg); // Manejo del error como objeto JSON
         });
-        revalidateTag('board')
+        // revalidateTag('board')
 
       setForm({
         name: "",
